@@ -48,6 +48,8 @@
 #include "constants/trainers.h"
 #include "constants/union_room.h"
 
+#include "debug.h"
+
 #define DAY_EVO_HOUR_BEGIN       12
 #define DAY_EVO_HOUR_END         HOURS_PER_DAY
 
@@ -3108,7 +3110,7 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     u32 i;
     s32 damage = 0;
     s32 damageHelper;
-    u8 type;
+    u8 type, split;
     u16 attack, defense;
     u16 spAttack, spDefense;
     u8 defenderHoldEffect;
@@ -3125,6 +3127,8 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         type = gBattleMoves[move].type;
     else
         type = typeOverride & DYNAMIC_TYPE_MASK;
+
+    split = gBattleMoves[move].pss;
 
     attack = attacker->attack;
     defense = defender->defense;
@@ -3173,7 +3177,7 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         if (attackerHoldEffect == sHoldEffectToType[i][0]
             && type == sHoldEffectToType[i][1])
         {
-            if (IS_TYPE_PHYSICAL(type))
+            if (IS_MOVE_PHYSICAL(split))
                 attack = (attack * (attackerHoldEffectParam + 100)) / 100;
             else
                 spAttack = (spAttack * (attackerHoldEffectParam + 100)) / 100;
@@ -3204,9 +3208,9 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         spAttack /= 2;
     if (attacker->ability == ABILITY_HUSTLE)
         attack = (150 * attack) / 100;
-    if (attacker->ability == ABILITY_PLUS && ABILITY_ON_FIELD2(ABILITY_MINUS))
+    if (attacker->ability == ABILITY_PLUS && (ABILITY_ON_FIELD2(ABILITY_MINUS) || ABILITY_ON_FIELD2(ABILITY_PLUS)))
         spAttack = (150 * spAttack) / 100;
-    if (attacker->ability == ABILITY_MINUS && ABILITY_ON_FIELD2(ABILITY_PLUS))
+    if (attacker->ability == ABILITY_MINUS && (ABILITY_ON_FIELD2(ABILITY_MINUS) || ABILITY_ON_FIELD2(ABILITY_PLUS)))
         spAttack = (150 * spAttack) / 100;
     if (attacker->ability == ABILITY_GUTS && attacker->status1)
         attack = (150 * attack) / 100;
@@ -3229,7 +3233,7 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     if (gBattleMoves[gCurrentMove].effect == EFFECT_EXPLOSION)
         defense /= 2;
 
-    if (IS_TYPE_PHYSICAL(type))
+    if (IS_MOVE_PHYSICAL(split))
     {
         if (gCritMultiplier == 2)
         {
@@ -3260,7 +3264,8 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         damage /= 50;
 
         // Burn cuts attack in half
-        if ((attacker->status1 & STATUS1_BURN) && attacker->ability != ABILITY_GUTS)
+        // Update: Make Facade not affected by burn
+        if ((attacker->status1 & STATUS1_BURN) && attacker->ability != ABILITY_GUTS && move != MOVE_FACADE)
             damage /= 2;
 
         // Apply Reflect
@@ -3272,9 +3277,9 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
                 damage /= 2;
         }
 
-        // Moves hitting both targets do half damage in double battles
+        // Moves hitting both targets do 25% less damage in double battles
         if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && gBattleMoves[move].target == MOVE_TARGET_BOTH && CountAliveMonsInBattle(BATTLE_ALIVE_DEF_SIDE) == 2)
-            damage /= 2;
+            damage = (damage * 3) / 4;
 
         // Moves always do at least 1 damage.
         if (damage == 0)
@@ -3284,7 +3289,7 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     if (type == TYPE_MYSTERY)
         damage = 0; // is ??? type. does 0 damage.
 
-    if (IS_TYPE_SPECIAL(type))
+    if (IS_MOVE_SPECIAL(split))
     {
         if (gCritMultiplier == 2)
         {
@@ -3323,9 +3328,9 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
                 damage /= 2;
         }
 
-        // Moves hitting both targets do half damage in double battles
+        // Moves hitting both targets do 25% less damage in double battles
         if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && gBattleMoves[move].target == MOVE_TARGET_BOTH && CountAliveMonsInBattle(BATTLE_ALIVE_DEF_SIDE) == 2)
-            damage /= 2;
+            damage = (damage * 3) / 4;
 
         // Are effects of weather negated with cloud nine or air lock
         if (WEATHER_HAS_EFFECT2)
@@ -3368,6 +3373,11 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
             damage = (15 * damage) / 10;
     }
 
+    #ifdef DEBUG_BATTLE
+    DebugPrintf("CalculateBaseDamage: Damage: %u", damage + 2);
+    DebugPrintf("CalculateBaseDamage: Move: %u", gCurrentMove);
+    DebugPrintf("CalculateBaseDamage: Split: %u", split);
+    #endif
     return damage + 2;
 }
 

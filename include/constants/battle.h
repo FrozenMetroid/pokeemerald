@@ -385,4 +385,8 @@ enum BattlerId
 // Indicator for the party summary bar to display an empty slot.
 #define HP_EMPTY_SLOT 0xFFFF
 
+#define MOVE_PHYSICAL 0
+#define MOVE_SPECIAL  1
+#define MOVE_STATUS   2
+
 #endif // GUARD_CONSTANTS_BATTLE_H

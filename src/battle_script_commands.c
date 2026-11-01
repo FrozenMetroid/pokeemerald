@@ -1153,7 +1153,7 @@ static void Cmd_accuracycheck(void)
             calc = (calc * 130) / 100; // 1.3 compound eyes boost
         if (WEATHER_HAS_EFFECT && gBattleMons[gBattlerTarget].ability == ABILITY_SAND_VEIL && gBattleWeather & B_WEATHER_SANDSTORM)
             calc = (calc * 80) / 100; // 1.2 sand veil loss
-        if (gBattleMons[gBattlerAttacker].ability == ABILITY_HUSTLE && IS_TYPE_PHYSICAL(type))
+        if (gBattleMons[gBattlerAttacker].ability == ABILITY_HUSTLE && IS_MOVE_PHYSICAL(move))
             calc = (calc * 80) / 100; // 1.2 hustle loss
 
         if (gBattleMons[gBattlerTarget].item == ITEM_ENIGMA_BERRY)
@@ -1844,6 +1844,7 @@ static void Cmd_healthbarupdate(void)
 static void Cmd_datahpupdate(void)
 {
     u32 moveType;
+    u32 moveSplit;
 
     if (gBattleControllerExecFlags)
         return;
@@ -1858,6 +1859,8 @@ static void Cmd_datahpupdate(void)
         moveType = gBattleStruct->dynamicMoveType & DYNAMIC_TYPE_MASK;
     else
         moveType = gBattleMoves[gCurrentMove].type;
+
+    moveSplit = gBattleMoves[gCurrentMove].pss;
 
     if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
     {
@@ -1935,7 +1938,7 @@ static void Cmd_datahpupdate(void)
                 // Note: While physicalDmg/specialDmg below are only distinguished between for Counter/Mirror Coat, they are
                 //       used in combination as general damage trackers for other purposes. specialDmg is additionally used
                 //       to help determine if a fire move should defrost the target.
-                if (IS_TYPE_PHYSICAL(moveType) && !(gHitMarker & HITMARKER_PASSIVE_HP_UPDATE) && gCurrentMove != MOVE_PAIN_SPLIT)
+                if (IS_MOVE_PHYSICAL(moveSplit) && !(gHitMarker & HITMARKER_PASSIVE_HP_UPDATE) && gCurrentMove != MOVE_PAIN_SPLIT)
                 {
                     // Record physical damage/attacker for Counter
                     gProtectStructs[gActiveBattler].physicalDmg = gHpDealt;
@@ -1951,7 +1954,7 @@ static void Cmd_datahpupdate(void)
                         gSpecialStatuses[gActiveBattler].physicalBattlerId = gBattlerTarget;
                     }
                 }
-                else if (!IS_TYPE_PHYSICAL(moveType) && !(gHitMarker & HITMARKER_PASSIVE_HP_UPDATE))
+                else if (!IS_MOVE_PHYSICAL(moveSplit) && !(gHitMarker & HITMARKER_PASSIVE_HP_UPDATE))
                 {
                     // Record special damage/attacker for Mirror Coat
                     gProtectStructs[gActiveBattler].specialDmg = gHpDealt;
