@@ -8597,12 +8597,14 @@ static void Cmd_furycuttercalc(void)
         gDynamicBasePower = gBattleMoves[gCurrentMove].power;
 
         for (i = 1; i < gDisableStructs[gBattlerAttacker].furyCutterCounter; i++)
+        {
             gDynamicBasePower *= 2;
             if (gDynamicBasePower > 160) {
                 gDynamicBasePower = 160;
                 break;
             }
-
+        }
+        
         gBattlescriptCurrInstr++;
     }
 }
