@@ -1,0 +1,1 @@
+#define INFINITE_TMS // makes TMs reusable indefinitely

@@ -1,11 +1,22 @@
 # Pokémon Emerald
 
-This is a decompilation of Pokémon Emerald.
+This is a decompilation of Pokémon Emerald that has been modified to be the ideal version for Senate/Frozen_Metroid.
 
-It builds the following ROM:
+All credits for the decompilation efforts lie with the contributors of pokeemerald!
 
-* [**pokeemerald.gba**](https://datomatic.no-intro.org/index.php?page=show_record&s=23&n=1961) `sha1: f3ae088181bf583e55daf962a92bb46f4f1d07b7`
+# Senate/Frozen_Metroid Changes:
 
-To set up the repository, see [INSTALL.md](INSTALL.md).
+## Battle
 
-For contacts and other pret projects, see [pret.github.io](https://pret.github.io/).
+### Moves
+- Fury Cutter: BP increased from 10 to 30, maximum damage set to 160
+
+### Battle Mechanics
+- Updated spread moves (Earthquake, Surf, etc.) to deal 75% damage in double battles rather than 50%
+
+## Overworld
+
+### QoL
+- TMs are infinite
+ - Removed extra TMs from Game Corner, Pickup, etc.
+

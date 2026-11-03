@@ -73,6 +73,8 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 
+#include "senate_config.h"
+
 enum {
     MENU_SUMMARY,
     MENU_SWITCH,
@@ -4775,8 +4777,10 @@ static void Task_LearnedMove(u8 taskId)
     if (move[1] == 0)
     {
         AdjustFriendship(mon, FRIENDSHIP_EVENT_LEARN_TMHM);
+        #ifndef INFINITE_TMS
         if (item < ITEM_HM01)
             RemoveBagItem(item, 1);
+        #endif
     }
     GetMonNickname(mon, gStringVar1);
     StringCopy(gStringVar2, gMoveNames[move[0]]);
