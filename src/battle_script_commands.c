@@ -52,6 +52,8 @@
 #include "constants/songs.h"
 #include "constants/trainers.h"
 
+#include "senate_config.h"
+
 extern const u8 *const gBattleScriptsForMoveEffects[];
 
 #define DEFENDER_IS_PROTECTED ((gProtectStructs[gBattlerTarget].protected) && (gBattleMoves[gCurrentMove].flags & FLAG_PROTECT_AFFECTED))
@@ -8911,7 +8913,11 @@ static void Cmd_hiddenpowercalc(void)
                  | ((gBattleMons[gBattlerAttacker].spAttackIV & 1) << 4)
                  | ((gBattleMons[gBattlerAttacker].spDefenseIV & 1) << 5);
 
+    #ifndef HIDDEN_POWER_60BP
     gDynamicBasePower = (40 * powerBits) / 63 + 30;
+    #else
+    gDynamicBasePower = 60;
+    #endif
 
     // Subtract 3 instead of 1 below because 2 types are excluded (TYPE_NORMAL and TYPE_MYSTERY)
     // The final + 1 skips past Normal, and the following conditional skips TYPE_MYSTERY
