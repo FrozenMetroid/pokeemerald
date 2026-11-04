@@ -15,6 +15,8 @@
 #include "constants/items.h"
 #include "constants/hold_effects.h"
 
+#include "senate_config.h"
+
 static bool8 CheckPyramidBagHasItem(u16 itemId, u16 count);
 static bool8 CheckPyramidBagHasSpace(u16 itemId, u16 count);
 
@@ -187,10 +189,14 @@ bool8 CheckBagHasSpace(u16 itemId, u16 count)
     }
 
     pocket = GetItemPocket(itemId) - 1;
-    if (pocket != BERRIES_POCKET)
-        slotCapacity = MAX_BAG_ITEM_CAPACITY;
-    else
+    if (pocket == BERRIES_POCKET)
         slotCapacity = MAX_BERRY_CAPACITY;
+    #ifdef INFINITE_TMS
+    else if (pocket == TMHM_POCKET)
+        slotCapacity = 1;
+    #endif
+    else
+        slotCapacity = MAX_BAG_ITEM_CAPACITY;
 
     // Check space in any existing item slots that already contain this item
     for (i = 0; i < gBagPockets[pocket].capacity; i++)
@@ -259,10 +265,14 @@ bool8 AddBagItem(u16 itemId, u16 count)
         newItems = AllocZeroed(itemPocket->capacity * sizeof(struct ItemSlot));
         memcpy(newItems, itemPocket->itemSlots, itemPocket->capacity * sizeof(struct ItemSlot));
 
-        if (pocket != BERRIES_POCKET)
-            slotCapacity = MAX_BAG_ITEM_CAPACITY;
-        else
+        if (pocket == BERRIES_POCKET)
             slotCapacity = MAX_BERRY_CAPACITY;
+        #ifdef INFINITE_TMS
+        else if (pocket == TMHM_POCKET)
+            slotCapacity = 1;
+        #endif
+        else
+            slotCapacity = MAX_BAG_ITEM_CAPACITY;
 
         for (i = 0; i < itemPocket->capacity; i++)
         {
