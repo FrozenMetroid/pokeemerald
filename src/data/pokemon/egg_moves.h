@@ -1023,7 +1023,8 @@ const u16 gEggMoves[] = {
     egg_moves(KECLEON,
               MOVE_DISABLE,
               MOVE_MAGIC_COAT,
-              MOVE_TRICK),
+              MOVE_TRICK,
+              MOVE_SHADOW_PUNCH),
 
     egg_moves(NOSEPASS,
               MOVE_MAGNITUDE,

@@ -8908,11 +8908,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_NOSEPASS] =
     {
-        .baseHP        = 50,
+        .baseHP        = 55,
         .baseAttack    = 75,
         .baseDefense   = 115,
         .baseSpeed     = 30,
-        .baseSpAttack  = 80,
+        .baseSpAttack  = 75,
         .baseSpDefense = 90,
         .types = { TYPE_ROCK, TYPE_ROCK },
         .catchRate = 255,
