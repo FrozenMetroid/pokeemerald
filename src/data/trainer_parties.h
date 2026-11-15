@@ -11649,48 +11649,74 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Darius[] = {
     }
 };
 
-static const struct TrainerMonItemCustomMoves sParty_Steven[] = {
+static const struct TrainerMonExpanded sParty_Steven[] = {
     {
-    .iv = 255,
+    .iv = 0,
     .lvl = 77,
     .species = SPECIES_SKARMORY,
     .heldItem = ITEM_NONE,
-    .moves = {MOVE_TOXIC, MOVE_AERIAL_ACE, MOVE_SPIKES, MOVE_STEEL_WING}
+    .moves = {MOVE_TOXIC, MOVE_AERIAL_ACE, MOVE_SPIKES, MOVE_STEEL_WING},
+    .abilityNum = ABILITY_BATTLE_ARMOR,
+    .nature = NATURE_CAREFUL,
+    .ivs = {31, 31, 31, 31, 31, 31},
+    .evs = {252, 4, 0, 0, 0, 252},
     },
     {
-    .iv = 255,
+    .iv = 0,
     .lvl = 75,
     .species = SPECIES_CLAYDOL,
     .heldItem = ITEM_NONE,
-    .moves = {MOVE_REFLECT, MOVE_LIGHT_SCREEN, MOVE_ANCIENT_POWER, MOVE_EARTHQUAKE}
+    .moves = {MOVE_REFLECT, MOVE_LIGHT_SCREEN, MOVE_ICE_BEAM, MOVE_EARTHQUAKE},
+    .abilityNum = ABILITY_LEVITATE,
+    .nature = NATURE_SASSY,
+    .ivs = {31, 31, 31, 31, 31, 31},
+    .evs = {252, 0, 128, 0, 0, 128},
     },
     {
-    .iv = 255,
+    .iv = 0,
     .lvl = 76,
     .species = SPECIES_AGGRON,
     .heldItem = ITEM_NONE,
-    .moves = {MOVE_THUNDER, MOVE_EARTHQUAKE, MOVE_SOLAR_BEAM, MOVE_DRAGON_CLAW}
+    .moves = {MOVE_IRON_TAIL, MOVE_EARTHQUAKE, MOVE_ROCK_SLIDE, MOVE_THUNDER_PUNCH},
+    .abilityNum = ABILITY_STURDY,
+    .nature = NATURE_ADAMANT,
+    .ivs = {31, 31, 31, 31, 31, 31},
+    .evs = {252, 252, 0, 0, 0, 0},
     },
     {
-    .iv = 255,
+    .iv = 0,
     .lvl = 76,
     .species = SPECIES_CRADILY,
     .heldItem = ITEM_NONE,
-    .moves = {MOVE_GIGA_DRAIN, MOVE_ANCIENT_POWER, MOVE_INGRAIN, MOVE_CONFUSE_RAY}
+    .moves = {MOVE_GIGA_DRAIN, MOVE_ANCIENT_POWER, MOVE_SANDSTORM, MOVE_RECOVER},
+    .abilityNum = ABILITY_SUCTION_CUPS,
+    .nature = NATURE_MODEST,
+    .ivs = {31, 31, 31, 31, 31, 31},
+    .evs = {252, 0, 64, 0, 128, 64},
     },
     {
-    .iv = 255,
+    .iv = 0,
     .lvl = 76,
     .species = SPECIES_ARMALDO,
     .heldItem = ITEM_NONE,
-    .moves = {MOVE_WATER_PULSE, MOVE_ANCIENT_POWER, MOVE_AERIAL_ACE, MOVE_SLASH}
+    .moves = {MOVE_WATERFALL, MOVE_ROCK_SLIDE, MOVE_AERIAL_ACE, MOVE_LEECH_LIFE},
+    .abilityNum = ABILITY_BATTLE_ARMOR,
+    .nature = NATURE_ADAMANT,
+    .ivs = {31, 31, 31, 31, 31, 31},
+    .evs = {0, 252, 252, 0, 0, 0},
     },
     {
-    .iv = 255,
+    .iv = 0,
     .lvl = 78,
     .species = SPECIES_METAGROSS,
     .heldItem = ITEM_SITRUS_BERRY,
-    .moves = {MOVE_EARTHQUAKE, MOVE_PSYCHIC, MOVE_METEOR_MASH, MOVE_SHADOW_BALL}
+    .moves = {MOVE_EARTHQUAKE, MOVE_PSYCHIC, MOVE_METEOR_MASH, MOVE_ICE_PUNCH},
+    .ball = ITEM_PREMIER_BALL,
+    .abilityNum = ABILITY_CLEAR_BODY,
+    .nature = NATURE_BRAVE,
+    .shinyLock = TRUE,
+    .ivs = {31, 31, 31, 31, 31, 31},
+    .evs = {128, 252, 0, 0, 128, 0},
     }
 };
 

@@ -10115,6 +10115,7 @@ const union {
         .RAIN_DANCE = TRUE,
         .SAFEGUARD = TRUE,
         .FRUSTRATION = TRUE,
+        .IRON_TAIL = TRUE,
         .THUNDERBOLT = TRUE,
         .THUNDER = TRUE,
         .RETURN = TRUE,

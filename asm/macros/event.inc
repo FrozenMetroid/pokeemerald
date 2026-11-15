@@ -1784,6 +1784,11 @@
 	.2byte \quantity
 	.endm
 
+	@ Debug fills the pokedex to check if new species were added properly
+	.macro fillpokedex
+	.byte SCR_OP_FILLPOKEDEX
+	.endm
+
 
 @ Supplementary
 

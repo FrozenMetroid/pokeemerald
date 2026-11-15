@@ -22,6 +22,7 @@ All credits for the decompilation efforts lie with the contributors of pokeemera
 - Hidden Power: BP standardized to 60BP
 - Knock Off: BP increased from 20 to 40, now deals 1.5x damage if the target has an item
 - Leech Life: Modernized to 80BP
+- Meteor Mash: Modernized to 90BP and 90 accuracy
 - Rock Smash: BP increased from 20 to 50
 - Silver Wind: BP increased from 60 to 65, PP increased from 5 to 15
 - Shadow Punch: BP increased from 60 to 80
@@ -32,7 +33,23 @@ All credits for the decompilation efforts lie with the contributors of pokeemera
 
 ## Field
 
+### Encounters
+- New Species Added To Hoenn Pokédex
+ - Fiery Path
+  - Magby
+ - Magma Hideout
+  - Magmar
+ - New Mauville
+  - Elekid
+ - Shoal Cave
+  - Smoochum
+  - Jynx
+  - Sneasel
+ - Underwater (124 & 126)
+  - Shellder
+ - Water Routes (Surf)
+  - Mantine
+
 ### QoL
 - TMs are infinite
 - Overworld poison has been removed
-

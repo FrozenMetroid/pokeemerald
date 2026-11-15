@@ -2086,18 +2086,16 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                     u32 personalityBase = personalityValue & 0xFFFFFF00;
                     u32 newPersonality;
                     u8 originalGender = GetGenderFromSpeciesAndPersonality(partyData[i].species, personalityValue);
-                    j = 0;
+                    j = 1;
 
                     do { // keep trying combinations to preserve gender, idk what else to do. This should cover all possibilities within the 256 options for those 8 bits
                         newPersonality = personalityBase | j;
                         j++;
-                    } while (!(GetNatureFromPersonality(newPersonality) == partyData[i].nature && GetGenderFromSpeciesAndPersonality(partyData[i].species, newPersonality) == originalGender));
+                    } while (GetNatureFromPersonality(newPersonality) != partyData[i].nature || GetGenderFromSpeciesAndPersonality(partyData[i].species, newPersonality) != originalGender);
                     
-                    personalityValue = newPersonality;
+                    personalityValue |= newPersonality;
                 }
-                fixedIV = partyData[i].iv * MAX_PER_STAT_IVS / 255;
-                CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
-                SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
+                CreateMon(&party[i], partyData[i].species, partyData[i].lvl, 0, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
 
                 for (j = 0; j < MAX_MON_MOVES; j++)
                 {
@@ -2126,6 +2124,10 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 // ability
                 if (partyData[i].abilityNum) {
                     SetMonData(&party[i], MON_DATA_ABILITY_NUM, &partyData[i].abilityNum);
+                }
+
+                if (partyData[i].heldItem) {
+                    SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
                 }
 
                 // shininess

@@ -149,67 +149,29 @@ movement Route101_Movement_EnterScene {
 }
 
 movement Route101_Movement_BirchRunInCircles {
-	walk_fast_up
-	walk_fast_up
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_down
-	walk_fast_down
-	walk_fast_left
-	walk_fast_left
-	walk_fast_left
-	walk_fast_up
-	walk_fast_up
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_down
-	walk_fast_down
-	walk_fast_left
-	walk_fast_left
-	walk_fast_left
-	walk_fast_up
-	walk_fast_up
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_down
-	walk_fast_down
-	walk_fast_left
-	walk_fast_left
-	walk_fast_left
+	walk_fast_up * 2
+	walk_fast_right * 3
+	walk_fast_down * 2
+	walk_fast_left * 3
+	walk_fast_up * 2
+	walk_fast_right * 3
+	walk_fast_down * 2
+	walk_fast_left * 3
+	walk_fast_up * 2
+	walk_fast_right * 3
+	walk_fast_down * 2
+	walk_fast_left * 3
 	step_end
 }
 
 movement Route101_Movement_BirchRunAway1 {
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_up
-	walk_fast_up
+	walk_fast_right * 4
+	walk_fast_up * 2
 	step_end
 }
 
 movement Route101_Movement_BirchFaceZigzagoon {
-	walk_in_place_fast_right
-	walk_in_place_fast_right
-	walk_in_place_fast_right
-	walk_in_place_fast_right
-	step_end
-}
-
-movement Route101_Movement_Unused1 {
-	walk_up
-	walk_up
-	step_end
-}
-
-movement Route101_Movement_Unused2 {
-	walk_up
-	walk_left
-	walk_up
+	walk_in_place_fast_right * 4
 	step_end
 }
 
