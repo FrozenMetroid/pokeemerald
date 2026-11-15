@@ -35,20 +35,20 @@ All credits for the decompilation efforts lie with the contributors of pokeemera
 
 ### Encounters
 - New Species Added To Hoenn Pokédex
- - Fiery Path
-  - Magby
- - Magma Hideout
-  - Magmar
- - New Mauville
-  - Elekid
- - Shoal Cave
-  - Smoochum
-  - Jynx
-  - Sneasel
- - Underwater (124 & 126)
-  - Shellder
- - Water Routes (Surf)
-  - Mantine
+  - Fiery Path
+    - Magby
+  - Magma Hideout
+    - Magmar
+  - New Mauville
+    - Elekid
+  - Shoal Cave
+    - Smoochum
+    - Jynx
+    - Sneasel
+  - Underwater (124 & 126)
+    - Shellder
+  - Water Routes (Surf)
+    - Mantine
 
 ### QoL
 - TMs are infinite
