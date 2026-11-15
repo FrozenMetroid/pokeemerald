@@ -39,14 +39,20 @@ All credits for the decompilation efforts lie with the contributors of pokeemera
     - Magby
   - Magma Hideout
     - Magmar
+  - Mt. Pyre
+    - Misdreavus
   - New Mauville
     - Elekid
+  - Rusturf Tunnel, Granite Cave, Magma Hideout
+    - Onix
   - Shoal Cave
     - Smoochum
     - Jynx
     - Sneasel
   - Underwater (124 & 126)
     - Shellder
+  - Victory Road
+    - Steelix
   - Water Routes (Surf)
     - Mantine
 
