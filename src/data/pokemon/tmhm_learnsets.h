@@ -9466,6 +9466,7 @@ const union {
         .THUNDERBOLT = TRUE,
         .THUNDER = TRUE,
         .RETURN = TRUE,
+        .PSYCHIC = TRUE,
         .SHADOW_BALL = TRUE,
         .BRICK_BREAK = TRUE,
         .DOUBLE_TEAM = TRUE,
@@ -9494,6 +9495,7 @@ const union {
         .THUNDERBOLT = TRUE,
         .THUNDER = TRUE,
         .RETURN = TRUE,
+        .PSYCHIC = TRUE,
         .SHADOW_BALL = TRUE,
         .BRICK_BREAK = TRUE,
         .DOUBLE_TEAM = TRUE,
@@ -9569,7 +9571,12 @@ const union {
         .REST = TRUE,
         .ATTRACT = TRUE,
         .CUT = TRUE,
+        .SURF = TRUE,
+        .STRENGTH = TRUE,
         .ROCK_SMASH = TRUE,
+        .WATERFALL = TRUE,
+        .DIVE = TRUE,
+
     } },
 
     [SPECIES_ARMALDO] = { .learnset = {
@@ -9594,8 +9601,11 @@ const union {
         .REST = TRUE,
         .ATTRACT = TRUE,
         .CUT = TRUE,
+        .SURF = TRUE,
         .STRENGTH = TRUE,
         .ROCK_SMASH = TRUE,
+        .WATERFALL = TRUE,
+        .DIVE = TRUE,
     } },
 
     [SPECIES_RALTS] = { .learnset = {
@@ -9662,6 +9672,7 @@ const union {
         .HIDDEN_POWER = TRUE,
         .SUNNY_DAY = TRUE,
         .TAUNT = TRUE,
+        .ICE_BEAM = TRUE,
         .HYPER_BEAM = TRUE,
         .LIGHT_SCREEN = TRUE,
         .PROTECT = TRUE,

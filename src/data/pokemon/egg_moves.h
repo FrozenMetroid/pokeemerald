@@ -299,7 +299,8 @@ const u16 gEggMoves[] = {
               MOVE_ASTONISH,
               MOVE_WILL_O_WISP,
               MOVE_GRUDGE,
-              MOVE_EXPLOSION),
+              MOVE_EXPLOSION,
+              MOVE_SHADOW_PUNCH),
 
     egg_moves(ONIX,
               MOVE_ROCK_SLIDE,
@@ -1201,7 +1202,8 @@ const u16 gEggMoves[] = {
               MOVE_SLAM,
               MOVE_RAZOR_WIND,
               MOVE_LEECH_SEED,
-              MOVE_NATURE_POWER),
+              MOVE_NATURE_POWER,
+              MOVE_DRAGON_DANCE),
 
     egg_moves(WHISMUR,
               MOVE_TAKE_DOWN,

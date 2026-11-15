@@ -6781,11 +6781,20 @@ static const struct TrainerMonNoItemCustomMoves sParty_WallyVR1[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRoute103Mudkip[] = {
+static const struct TrainerMonExpanded sParty_BrendanRoute103Mudkip[] = {
     {
     .iv = 0,
     .lvl = 5,
     .species = SPECIES_TREECKO,
+    .heldItem = ITEM_NONE,
+    .moves = {MOVE_POUND, MOVE_LEER, MOVE_NONE, MOVE_NONE},
+    .ball = ITEM_POKE_BALL,
+    TRAINER_ABILITY_SET(ABILITY_OVERGROW),
+    .nature = NATURE_ADAMANT,
+    .status = STATUS1_NONE,
+    .shinyLock = FALSE,
+    .ivs = {10, 10, 10, 10, 10, 10},
+    .evs = {0, 0, 0, 0, 0, 0},
     }
 };
 
@@ -6825,11 +6834,20 @@ static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRoute119Mudkip[] 
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRoute103Treecko[] = {
+static const struct TrainerMonExpanded sParty_BrendanRoute103Treecko[] = {
     {
     .iv = 0,
     .lvl = 5,
     .species = SPECIES_TORCHIC,
+    .heldItem = ITEM_NONE,
+    .moves = {MOVE_SCRATCH, MOVE_GROWL, MOVE_NONE, MOVE_NONE},
+    .ball = ITEM_POKE_BALL,
+    TRAINER_ABILITY_SET(ABILITY_BLAZE),
+    .nature = NATURE_HASTY,
+    .status = STATUS1_NONE,
+    .shinyLock = FALSE,
+    .ivs = {10, 10, 10, 10, 10, 10},
+    .evs = {0, 0, 0, 0, 0, 0},
     }
 };
 
@@ -6869,11 +6887,20 @@ static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRoute119Treecko[]
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRoute103Torchic[] = {
+static const struct TrainerMonExpanded sParty_BrendanRoute103Torchic[] = {
     {
     .iv = 0,
     .lvl = 5,
     .species = SPECIES_MUDKIP,
+    .heldItem = ITEM_NONE,
+    .moves = {MOVE_TACKLE, MOVE_GROWL, MOVE_NONE, MOVE_NONE},
+    .ball = ITEM_POKE_BALL,
+    TRAINER_ABILITY_SET(ABILITY_TORRENT),
+    .nature = NATURE_DOCILE,
+    .status = STATUS1_NONE,
+    .shinyLock = FALSE,
+    .ivs = {10, 10, 10, 10, 10, 10},
+    .evs = {0, 0, 0, 0, 0, 0},
     }
 };
 
@@ -6913,11 +6940,20 @@ static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRoute119Torchic[]
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_MayRoute103Mudkip[] = {
+static const struct TrainerMonExpanded sParty_MayRoute103Mudkip[] = {
     {
     .iv = 0,
     .lvl = 5,
     .species = SPECIES_TREECKO,
+    .heldItem = ITEM_NONE,
+    .moves = {MOVE_POUND, MOVE_LEER, MOVE_NONE, MOVE_NONE},
+    .ball = ITEM_POKE_BALL,
+    TRAINER_ABILITY_SET(ABILITY_OVERGROW),
+    .nature = NATURE_ADAMANT,
+    .status = STATUS1_NONE,
+    .shinyLock = FALSE,
+    .ivs = {10, 10, 10, 10, 10, 10},
+    .evs = {0, 0, 0, 0, 0, 0},
     }
 };
 
@@ -6957,11 +6993,20 @@ static const struct TrainerMonNoItemDefaultMoves sParty_MayRoute119Mudkip[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_MayRoute103Treecko[] = {
+static const struct TrainerMonExpanded sParty_MayRoute103Treecko[] = {
     {
     .iv = 0,
     .lvl = 5,
     .species = SPECIES_TORCHIC,
+    .heldItem = ITEM_NONE,
+    .moves = {MOVE_SCRATCH, MOVE_GROWL, MOVE_NONE, MOVE_NONE},
+    .ball = ITEM_POKE_BALL,
+    TRAINER_ABILITY_SET(ABILITY_BLAZE),
+    .nature = NATURE_HASTY,
+    .status = STATUS1_NONE,
+    .shinyLock = FALSE,
+    .ivs = {10, 10, 10, 10, 10, 10},
+    .evs = {0, 0, 0, 0, 0, 0},
     }
 };
 
@@ -7001,11 +7046,20 @@ static const struct TrainerMonNoItemDefaultMoves sParty_MayRoute119Treecko[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_MayRoute103Torchic[] = {
+static const struct TrainerMonExpanded sParty_MayRoute103Torchic[] = {
     {
     .iv = 0,
     .lvl = 5,
     .species = SPECIES_MUDKIP,
+    .heldItem = ITEM_NONE,
+    .moves = {MOVE_TACKLE, MOVE_GROWL, MOVE_NONE, MOVE_NONE},
+    .ball = ITEM_POKE_BALL,
+    TRAINER_ABILITY_SET(ABILITY_TORRENT),
+    .nature = NATURE_DOCILE,
+    .status = STATUS1_NONE,
+    .shinyLock = FALSE,
+    .ivs = {10, 10, 10, 10, 10, 10},
+    .evs = {0, 0, 0, 0, 0, 0},
     }
 };
 

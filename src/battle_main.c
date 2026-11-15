@@ -61,6 +61,8 @@
 #include "constants/trainers.h"
 #include "cable_club.h"
 
+#include "debug.h"
+
 extern const struct BgTemplate gBattleBgTemplates[];
 extern const struct WindowTemplate *const gBattleWindowTemplates[];
 
@@ -1960,10 +1962,11 @@ static void SpriteCB_UnusedBattleInit_Main(struct Sprite *sprite)
 static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 firstTrainer)
 {
     u32 nameHash = 0;
-    u32 personalityValue;
+    u32 personalityValue, id;
     u8 fixedIV;
     s32 i, j;
-    u8 monsCount;
+    u8 monsCount, currentNature;
+    u16 checksum;
 
     if (trainerNum == TRAINER_SECRET_BASE)
         return 0;
@@ -2063,6 +2066,80 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 {
                     SetMonData(&party[i], MON_DATA_MOVE1 + j, &partyData[i].moves[j]);
                     SetMonData(&party[i], MON_DATA_PP1 + j, &gBattleMoves[partyData[i].moves[j]].pp);
+                }
+                break;
+            }
+            case F_TRAINER_PARTY_CUSTOM_MOVESET | F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_EXPANDED:
+            {
+                const struct TrainerMonExpanded *partyData = gTrainers[trainerNum].party.Expanded;
+
+                for (j = 0; gSpeciesNames[partyData[i].species][j] != EOS; j++)
+                {
+                    nameHash += gSpeciesNames[partyData[i].species][j];
+                }
+
+                personalityValue += nameHash << 8;
+
+                // Nature
+                {
+                    // preserve the namehash thing in the upper bits
+                    u32 personalityBase = personalityValue & 0xFFFFFF00;
+                    u32 newPersonality;
+                    u8 originalGender = GetGenderFromSpeciesAndPersonality(partyData[i].species, personalityValue);
+                    j = 0;
+
+                    do { // keep trying combinations to preserve gender, idk what else to do. This should cover all possibilities within the 256 options for those 8 bits
+                        newPersonality = personalityBase | j;
+                        j++;
+                    } while (!(GetNatureFromPersonality(newPersonality) == partyData[i].nature && GetGenderFromSpeciesAndPersonality(partyData[i].species, newPersonality) == originalGender));
+                    
+                    personalityValue = newPersonality;
+                }
+                fixedIV = partyData[i].iv * MAX_PER_STAT_IVS / 255;
+                CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
+
+                for (j = 0; j < MAX_MON_MOVES; j++)
+                {
+                    SetMonData(&party[i], MON_DATA_MOVE1 + j, &partyData[i].moves[j]);
+                    SetMonData(&party[i], MON_DATA_PP1 + j, &gBattleMoves[partyData[i].moves[j]].pp);
+                }
+
+                // EVs and IVs; can be 0/undefined so it's fine to always set it
+                for (j = 0; j < NUM_STATS; j++)
+                {
+                    SetMonData(&party[i], MON_DATA_HP_EV + j, &partyData[i].evs[j]);
+                    SetMonData(&party[i], MON_DATA_HP_IV + j, &partyData[i].ivs[j]);
+                }
+                CalculateMonStats(&party[i]); // recalc stats now
+
+                // status
+                if (partyData[i].status) {
+                    SetMonData(&party[i], MON_DATA_STATUS, &partyData[i].status);
+                }
+
+                // poke ball; cannot be set to 0 so only set it if defined
+                if (partyData[i].ball) {
+                    SetMonData(&party[i], MON_DATA_POKEBALL, &partyData[i].ball);
+                }
+
+                // ability
+                if (partyData[i].abilityNum) {
+                    SetMonData(&party[i], MON_DATA_ABILITY_NUM, &partyData[i].abilityNum);
+                }
+
+                // shininess
+                if (partyData[i].shinyLock)
+                {
+                    DecryptBoxMon(&party[i].box);
+                    do {
+                        id = (Random() | (Random() << 16));
+                    } while (GET_SHINY_VALUE(id, personalityValue) >= SHINY_ODDS);
+                    SetMonData(&party[i], MON_DATA_OT_ID, &id);
+                    
+                    checksum = CalculateBoxMonChecksum(&party[i].box);
+                    SetBoxMonData(&party[i].box, MON_DATA_CHECKSUM, &checksum);
+                    EncryptBoxMon(&party[i].box);
                 }
                 break;
             }
@@ -3417,7 +3494,13 @@ static void BattleIntroDrawTrainersOrMonsSprites(void)
 
             gBattleMons[gActiveBattler].types[0] = gSpeciesInfo[gBattleMons[gActiveBattler].species].types[0];
             gBattleMons[gActiveBattler].types[1] = gSpeciesInfo[gBattleMons[gActiveBattler].species].types[1];
-            gBattleMons[gActiveBattler].ability = GetAbilityBySpecies(gBattleMons[gActiveBattler].species, gBattleMons[gActiveBattler].abilityNum);
+
+            if (gBattleMons[gActiveBattler].abilityNum & TRAINER_ABILITY_SET_BIT)
+            {
+                gBattleMons[gActiveBattler].ability = gBattleMons[gActiveBattler].abilityNum & 0x7F;
+            } else {
+                gBattleMons[gActiveBattler].ability = GetAbilityBySpecies(gBattleMons[gActiveBattler].species, gBattleMons[gActiveBattler].abilityNum);
+            }
             hpOnSwitchout = &gBattleStruct->hpOnSwitchout[GetBattlerSide(gActiveBattler)];
             *hpOnSwitchout = gBattleMons[gActiveBattler].hp;
             for (i = 0; i < NUM_BATTLE_STATS; i++)

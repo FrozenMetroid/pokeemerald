@@ -9,6 +9,7 @@ All credits for the decompilation efforts lie with the contributors of pokeemera
 ## Battle
 
 ### General Mechanics
+- Trainer Data overhaul: can now specify nature, ability, IVs/EVs, etc.
 - Updated spread moves (Earthquake, Surf, etc.) to deal 75% damage in double battles rather than 50%
 - Added Physical/Special split
 
@@ -19,6 +20,7 @@ All credits for the decompilation efforts lie with the contributors of pokeemera
 - Fly: BP increased from 70 to 90, accuracy increased from 95 to 100
 - Fury Cutter: BP increased from 10 to 30, maximum damage set to 160
 - Hidden Power: BP standardized to 60BP
+- Knock Off: BP increased from 20 to 40, now deals 1.5x damage if the target has an item
 - Leech Life: Modernized to 80BP
 - Rock Smash: BP increased from 20 to 50
 - Silver Wind: BP increased from 60 to 65, PP increased from 5 to 15

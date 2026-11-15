@@ -4641,7 +4641,12 @@ static void Cmd_switchindataupdate(void)
 
     gBattleMons[gActiveBattler].types[0] = gSpeciesInfo[gBattleMons[gActiveBattler].species].types[0];
     gBattleMons[gActiveBattler].types[1] = gSpeciesInfo[gBattleMons[gActiveBattler].species].types[1];
-    gBattleMons[gActiveBattler].ability = GetAbilityBySpecies(gBattleMons[gActiveBattler].species, gBattleMons[gActiveBattler].abilityNum);
+    if (gBattleMons[gActiveBattler].abilityNum & TRAINER_ABILITY_SET_BIT)
+    {
+        gBattleMons[gActiveBattler].ability = gBattleMons[gActiveBattler].abilityNum & 0x7F;
+    } else {
+        gBattleMons[gActiveBattler].ability = GetAbilityBySpecies(gBattleMons[gActiveBattler].species, gBattleMons[gActiveBattler].abilityNum);
+    }
 
     // check knocked off item
     i = GetBattlerSide(gActiveBattler);

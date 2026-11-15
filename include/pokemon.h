@@ -103,7 +103,8 @@ struct PokemonSubstruct0
     u32 experience;
     u8 ppBonuses;
     u8 friendship;
-    u16 filler;
+    u8 abilityNum;
+    u8 filler;
 };
 
 struct PokemonSubstruct1
@@ -145,7 +146,7 @@ struct PokemonSubstruct3
  /* 0x05 */ u32 spAttackIV:5;
  /* 0x06 */ u32 spDefenseIV:5;
  /* 0x07 */ u32 isEgg:1;
- /* 0x07 */ u32 abilityNum:1;
+ /* 0x07 */ u32 unused:1;
 
  /* 0x08 */ u32 coolRibbon:CONTEST_RIBBON_BITS;   // Stores the highest contest rank achieved in the Cool category.
  /* 0x08 */ u32 beautyRibbon:CONTEST_RIBBON_BITS; // Stores the highest contest rank achieved in the Beauty category.
@@ -273,7 +274,7 @@ struct BattlePokemon
     /*0x16*/ u32 spAttackIV:5;
     /*0x17*/ u32 spDefenseIV:5;
     /*0x17*/ u32 isEgg:1;
-    /*0x17*/ u32 abilityNum:1;
+    /*0x17*/ u32 unused:1;
     /*0x18*/ s8 statStages[NUM_BATTLE_STATS];
     /*0x20*/ u8 ability;
     /*0x21*/ u8 types[2];
@@ -292,6 +293,7 @@ struct BattlePokemon
     /*0x4C*/ u32 status1;
     /*0x50*/ u32 status2;
     /*0x54*/ u32 otId;
+    /*0x58*/ u32 abilityNum;
 };
 
 struct SpeciesInfo
@@ -544,5 +546,9 @@ bool8 HasTwoFramesAnimation(u16 species);
 struct MonSpritesGfxManager *CreateMonSpritesGfxManager(u8 managerId, u8 mode);
 void DestroyMonSpritesGfxManager(u8 managerId);
 u8 *MonSpritesGfxManager_GetSpritePtr(u8 managerId, u8 spriteNum);
+
+void EncryptBoxMon(struct BoxPokemon *boxMon);
+void DecryptBoxMon(struct BoxPokemon *boxMon);
+u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon);
 
 #endif // GUARD_POKEMON_H
