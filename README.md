@@ -8,6 +8,23 @@ All credits for the decompilation efforts lie with the contributors of pokeemera
 
 ## Battle
 
+### Abilities
+- New to Generation 3
+  - Filter
+    - Aggron
+  - Heatproof
+    - Glalie and Regice
+  - Rivalry
+    - Seviper and Zangoose
+  - Technician
+    - Persian, Scyther, Aipom, Scizor, Smeargle, and Hitmontop
+  - Scrappy
+    - Kangaskhan, Miltank, Swellow, and Exploud
+  - Skill Link
+    - Cloyster
+  - Solid Rock
+    - Rhydon and Regirock
+
 ### General Mechanics
 - Trainer Data overhaul: can now specify nature, ability, IVs/EVs, etc.
 - Updated spread moves (Earthquake, Surf, etc.) to deal 75% damage in double battles rather than 50%

@@ -3309,9 +3309,9 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
                 APPLY_STAT_MOD(damageHelper, defender, spDefense, STAT_SPDEF)
             else
                 damageHelper = spDefense;
-        }
-        else
+        } else {
             APPLY_STAT_MOD(damageHelper, defender, spDefense, STAT_SPDEF)
+        }
 
         damage = (damage / damageHelper);
         damage /= 50;
@@ -3324,64 +3324,89 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
             else
                 damage /= 2;
         }
-
-        // Moves hitting both targets do 25% less damage in double battles
-        if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && gBattleMoves[move].target == MOVE_TARGET_BOTH && CountAliveMonsInBattle(BATTLE_ALIVE_DEF_SIDE) == 2)
-            damage = (damage * 3) / 4;
-
-        // Are effects of weather negated with cloud nine or air lock
-        if (WEATHER_HAS_EFFECT2)
+    }
+    // Are effects of weather negated with cloud nine or air lock
+    if (WEATHER_HAS_EFFECT2)
+    {
+        // Rain weakens Fire, boosts Water
+        if (gBattleWeather & B_WEATHER_RAIN_TEMPORARY)
         {
-            // Rain weakens Fire, boosts Water
-            if (gBattleWeather & B_WEATHER_RAIN_TEMPORARY)
+            switch (type)
             {
-                switch (type)
-                {
-                case TYPE_FIRE:
-                    damage /= 2;
-                    break;
-                case TYPE_WATER:
-                    damage = (15 * damage) / 10;
-                    break;
-                }
-            }
-
-            // Any weather except sun weakens solar beam
-            if ((gBattleWeather & (B_WEATHER_RAIN | B_WEATHER_SANDSTORM | B_WEATHER_HAIL)) && gCurrentMove == MOVE_SOLAR_BEAM)
+            case TYPE_FIRE:
                 damage /= 2;
-
-            // Sun boosts Fire, weakens Water
-            if (gBattleWeather & B_WEATHER_SUN)
-            {
-                switch (type)
-                {
-                case TYPE_FIRE:
-                    damage = (15 * damage) / 10;
-                    break;
-                case TYPE_WATER:
-                    damage /= 2;
-                    break;
-                }
+                break;
+            case TYPE_WATER:
+                damage = (15 * damage) / 10;
+                break;
             }
         }
 
-        // Flash fire triggered
-        if ((gBattleResources->flags->flags[battlerIdAtk] & RESOURCE_FLAG_FLASH_FIRE) && type == TYPE_FIRE)
-            damage = (15 * damage) / 10;
+        // Any weather except sun weakens solar beam
+        if ((gBattleWeather & (B_WEATHER_RAIN | B_WEATHER_SANDSTORM | B_WEATHER_HAIL)) && gCurrentMove == MOVE_SOLAR_BEAM)
+            damage /= 2;
 
-        // Knock Off double damage
-        if (defender->item 
-            && gBattleMoves[gCurrentMove].effect == EFFECT_KNOCK_OFF
-            && !(gWishFutureKnock.knockedOffMons[gBattlerTarget] & gBitTable[gBattlerPartyIndexes[gBattlerTarget]]))
+        // Sun boosts Fire, weakens Water
+        if (gBattleWeather & B_WEATHER_SUN)
+        {
+            switch (type)
             {
+            case TYPE_FIRE:
                 damage = (15 * damage) / 10;
+                break;
+            case TYPE_WATER:
+                damage /= 2;
+                break;
             }
+        }
+    }
+    // Moves hitting both targets do 25% less damage in double battles
+    if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && gBattleMoves[move].target == MOVE_TARGET_BOTH && CountAliveMonsInBattle(BATTLE_ALIVE_DEF_SIDE) == 2) {
+        damage = (damage * 3) / 4;
+    }
+
+    // Flash fire triggered
+    if ((gBattleResources->flags->flags[battlerIdAtk] & RESOURCE_FLAG_FLASH_FIRE) && type == TYPE_FIRE) {
+        damage = (15 * damage) / 10;
+    }
+
+    // Knock Off double damage
+    if (defender->item 
+        && gBattleMoves[gCurrentMove].effect == EFFECT_KNOCK_OFF
+        && !(gWishFutureKnock.knockedOffMons[gBattlerTarget] & gBitTable[gBattlerPartyIndexes[gBattlerTarget]]))
+        {
+            damage = (15 * damage) / 10;
+        }
+    
+    // other abilities
+    if (attacker->ability == ABILITY_RIVALRY)
+    {
+        u8 attackerGender = GetGenderFromSpeciesAndPersonality(attacker->species, attacker->personality);
+        u8 defenderGender = GetGenderFromSpeciesAndPersonality(defender->species, defender->personality);
+
+        if (attackerGender == defenderGender) {
+            damage = (15 * damage) / 10;
+        } else {
+            damage = (3 * damage) / 4;
+        }
+    } else if (attacker->ability == ABILITY_TECHNICIAN) {
+        if (gBattleMoves[gCurrentMove].power <= 60
+            && gCurrentMove != MOVE_STRUGGLE) {
+            damage = (15 * damage) / 10;
+        }
+    } else if (defender->ability == ABILITY_FILTER || defender->ability == ABILITY_SOLID_ROCK) {
+        if (gMoveResultFlags & MOVE_RESULT_SUPER_EFFECTIVE) {
+            damage = (3 * damage) / 4;
+        }
+    } else if (defender->ability == ABILITY_HEATPROOF) {
+        if (type == TYPE_FIRE)
+            damage /= 2;
     }
 
     #ifdef DEBUG_BATTLE
-    DebugPrintf("CalculateBaseDamage: Damage: %u", damage + 2);
-    DebugPrintf("CalculateBaseDamage: Move: %u", gCurrentMove);
-    DebugPrintf("CalculateBaseDamage: Split: %u", split);
+    DebugPrintf("CalcBaseDamage: Damage: %u", damage + 2);
+    DebugPrintf("CalcBaseDamage: Move: %u", gCurrentMove);
+    DebugPrintf("CalcBaseDamage: Split: %u", split);
     #endif
     return damage + 2;
 }

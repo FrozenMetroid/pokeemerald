@@ -27,14 +27,14 @@ static const u8 sWonderGuardDescription[] = _("“Super effective” hits.");
 static const u8 sLevitateDescription[] = _("Not hit by GROUND attacks.");
 static const u8 sEffectSporeDescription[] = _("Leaves spores on contact.");
 static const u8 sSynchronizeDescription[] = _("Passes on status problems.");
-static const u8 sClearBodyDescription[] = _("Prevents ability reduction.");
+static const u8 sClearBodyDescription[] = _("Prevents Ability reduction.");
 static const u8 sNaturalCureDescription[] = _("Heals upon switching out.");
 static const u8 sLightningRodDescription[] = _("Draws electrical moves.");
 static const u8 sSereneGraceDescription[] = _("Promotes added effects.");
 static const u8 sSwiftSwimDescription[] = _("Raises SPEED in rain.");
 static const u8 sChlorophyllDescription[] = _("Raises SPEED in sunshine.");
 static const u8 sIlluminateDescription[] = _("Encounter rate increases.");
-static const u8 sTraceDescription[] = _("Copies special ability.");
+static const u8 sTraceDescription[] = _("Copies special Ability.");
 static const u8 sHugePowerDescription[] = _("Raises ATTACK.");
 static const u8 sPoisonPointDescription[] = _("Poisons foe on contact.");
 static const u8 sInnerFocusDescription[] = _("Prevents flinching.");
@@ -76,6 +76,14 @@ static const u8 sPurePowerDescription[] = _("Raises ATTACK.");
 static const u8 sShellArmorDescription[] = _("Blocks critical hits.");
 static const u8 sCacophonyDescription[] = _("Avoids sound-based moves.");
 static const u8 sAirLockDescription[] = _("Negates weather effects.");
+static const u8 sRivalryDescription[] = _("More damage on same gender.");
+static const u8 sTechnicianDescription[] = _("Powers up weaker moves.");
+static const u8 sFilterDescription[] = _("Lessens “Super effective”.");
+static const u8 sSolidRockDescription[] = _("Lessens “Super effective”.");
+static const u8 sHeatproofDescription[] = _("Weakens FIRE damage.");
+static const u8 sSkillLinkDescription[] = _("Hits more multi-hits.");
+static const u8 sScrappyDescription[] = _("Hits GHOST-type POKéMON.");
+
 
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
 {
@@ -157,6 +165,13 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_SHELL_ARMOR] = _("SHELL ARMOR"),
     [ABILITY_CACOPHONY] = _("CACOPHONY"),
     [ABILITY_AIR_LOCK] = _("AIR LOCK"),
+    [ABILITY_RIVALRY] = _("RIVALRY"),
+    [ABILITY_TECHNICIAN] = _("TECHNICIAN"),
+    [ABILITY_FILTER] = _("FILTER"),
+    [ABILITY_SOLID_ROCK] = _("SOLID ROCK"),
+    [ABILITY_HEATPROOF] = _("HEATPROOF"),
+    [ABILITY_SKILL_LINK] = _("SKILL LINK"),
+    [ABILITY_SCRAPPY] = _("SCRAPPY")
 };
 
 const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
@@ -239,4 +254,11 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_SHELL_ARMOR] = sShellArmorDescription,
     [ABILITY_CACOPHONY] = sCacophonyDescription,
     [ABILITY_AIR_LOCK] = sAirLockDescription,
+    [ABILITY_RIVALRY] = sRivalryDescription,
+    [ABILITY_TECHNICIAN] = sTechnicianDescription,
+    [ABILITY_FILTER] = sFilterDescription,
+    [ABILITY_SOLID_ROCK] = sSolidRockDescription,
+    [ABILITY_HEATPROOF] = sHeatproofDescription,
+    [ABILITY_SKILL_LINK] = sSkillLinkDescription,
+    [ABILITY_SCRAPPY] = sScrappyDescription,
 };
