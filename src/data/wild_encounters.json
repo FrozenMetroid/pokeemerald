@@ -9144,11 +9144,11 @@
               {
                 "min_level": 30,
                 "max_level": 30,
-                "species": "SPECIES_SPHEAL"
+                "species": "SPECIES_SWINUB"
               },
               {
-                "min_level": 26,
-                "max_level": 26,
+                "min_level": 28,
+                "max_level": 28,
                 "species": "SPECIES_SNORUNT"
               },
               {
@@ -9162,8 +9162,8 @@
                 "species": "SPECIES_SNEASEL"
               },
               {
-                "min_level": 28,
-                "max_level": 28,
+                "min_level": 29,
+                "max_level": 29,
                 "species": "SPECIES_SNORUNT"
               },
               {

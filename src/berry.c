@@ -11,6 +11,7 @@
 #include "random.h"
 #include "string_util.h"
 #include "text.h"
+#include "constants/abilities.h"
 #include "constants/event_object_movement.h"
 #include "constants/items.h"
 
@@ -1229,6 +1230,10 @@ static u8 CalcBerryYieldInternal(u16 max, u16 min, u8 water)
             extraYield = rand / NUM_WATER_STAGES + 1;
         else
             extraYield = rand / NUM_WATER_STAGES;
+
+        if (GetMonAbility(&gPlayerParty[0]) == ABILITY_HARVEST)
+            extraYield++;
+
         return extraYield + min;
     }
 }

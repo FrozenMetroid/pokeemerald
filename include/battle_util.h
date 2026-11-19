@@ -100,4 +100,6 @@ void HandleAction_RunBattleScript(void);
 u8 GetMoveTarget(u16 move, u8 setTarget);
 u8 IsMonDisobedient(void);
 
+void CheckSturdyActivation(void);
+
 #endif // GUARD_BATTLE_UTIL_H

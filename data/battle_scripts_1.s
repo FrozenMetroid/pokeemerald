@@ -4560,3 +4560,8 @@ BattleScript_PrintPlayerForfeitedLinkBattle::
 	endlinkbattle
 	waitmessage B_WAIT_TIME_LONG
 	end2
+
+BattleScript_HarvestActivates::
+	printstring STRINGID_HARVESTACTIVATES
+	waitmessage B_WAIT_TIME_LONG
+	end3

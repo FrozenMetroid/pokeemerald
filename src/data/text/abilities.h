@@ -83,6 +83,7 @@ static const u8 sSolidRockDescription[] = _("Lessens “Super effective”.");
 static const u8 sHeatproofDescription[] = _("Weakens FIRE damage.");
 static const u8 sSkillLinkDescription[] = _("Hits more multi-hits.");
 static const u8 sScrappyDescription[] = _("Hits GHOST-type POKéMON.");
+static const u8 sHarvestDescription[] = _("Restores held BERRY.");
 
 
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -171,7 +172,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_SOLID_ROCK] = _("SOLID ROCK"),
     [ABILITY_HEATPROOF] = _("HEATPROOF"),
     [ABILITY_SKILL_LINK] = _("SKILL LINK"),
-    [ABILITY_SCRAPPY] = _("SCRAPPY")
+    [ABILITY_SCRAPPY] = _("SCRAPPY"),
+    [ABILITY_HARVEST] = _("HARVEST")
 };
 
 const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
@@ -261,4 +263,5 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_HEATPROOF] = sHeatproofDescription,
     [ABILITY_SKILL_LINK] = sSkillLinkDescription,
     [ABILITY_SCRAPPY] = sScrappyDescription,
+    [ABILITY_HARVEST] = sHarvestDescription,
 };

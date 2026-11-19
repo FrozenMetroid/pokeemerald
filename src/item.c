@@ -951,3 +951,8 @@ u8 GetItemSecondaryId(u16 itemId)
 {
     return gItems[SanitizeItemId(itemId)].secondaryId;
 }
+
+bool8 IsItemBerry(u16 itemId)
+{
+    return gItems[SanitizeItemId(itemId)].pocket == POCKET_BERRIES;
+}

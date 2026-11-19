@@ -2639,6 +2639,18 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                 case ABILITY_TRUANT:
                     gDisableStructs[gBattlerAttacker].truantCounter ^= 1;
                     break;
+                case ABILITY_HARVEST:
+                    if (gBattleMons[battler].hp 
+                        && IsItemBerry(gBattleStruct->usedHeldItems[battler])
+                        && ((Random() % 2 == 0) || (WEATHER_HAS_EFFECT && (gBattleWeather & B_WEATHER_SUN)))) {
+                            gLastUsedItem = gBattleStruct->usedHeldItems[battler];
+                            gBattleMons[battler].item = gLastUsedItem;
+                            gLastUsedAbility = ABILITY_HARVEST;
+                            BattleScriptPushCursorAndCallback(BattleScript_HarvestActivates);
+                            gBattleScripting.battler = battler;
+                            effect++;
+                    }
+                    break;
                 }
             }
             break;
@@ -4019,6 +4031,19 @@ u8 IsMonDisobedient(void)
             gBattleCommunication[MULTISTRING_CHOOSER] = MOD(Random(), NUM_LOAF_STRINGS);
             gBattlescriptCurrInstr = BattleScript_MoveUsedLoafingAround;
             return DISOBEDIENCE_IGNORED;
+        }
+    }
+}
+
+void CheckSturdyActivation(void)
+{
+    if (gBattleMons[gBattlerTarget].ability == ABILITY_STURDY) {
+        if ((gBattleMons[gBattlerTarget].hp == gBattleMons[gBattlerTarget].maxHP)
+            && gBattleMoveDamage >= gBattleMons[gBattlerTarget].hp)
+        {
+            gProtectStructs[gBattlerTarget].endured = TRUE;
+        } else {
+            gProtectStructs[gBattlerTarget].endured = FALSE;
         }
     }
 }

@@ -12,6 +12,8 @@ All credits for the decompilation efforts lie with the contributors of pokeemera
 - New to Generation 3
   - Filter
     - Aggron
+  - Harvest
+   - Exeggutor and Tropius
   - Heatproof
     - Glalie and Regice
   - Rivalry
@@ -23,7 +25,9 @@ All credits for the decompilation efforts lie with the contributors of pokeemera
   - Skill Link
     - Cloyster
   - Solid Rock
-    - Rhydon and Regirock
+    - Rhydon, Camerupt, and Regirock
+- Changes to Abilities
+  - Sturdy prevents OHKOs at full health, like generation 5 and onward
 
 ### General Mechanics
 - Trainer Data overhaul: can now specify nature, ability, IVs/EVs, etc.
@@ -76,3 +80,4 @@ All credits for the decompilation efforts lie with the contributors of pokeemera
 ### QoL
 - TMs are infinite
 - Overworld poison has been removed
+- Pokémon with the Ability Harvest will grant one additional Berry when they are the first Pokémon in the party when collecting Berries (CalcBerryYieldInternal)

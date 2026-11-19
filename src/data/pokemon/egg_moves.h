@@ -607,7 +607,9 @@ const u16 gEggMoves[] = {
               MOVE_STEEL_WING,
               MOVE_PSYCH_UP,
               MOVE_FEATHER_DANCE,
-              MOVE_REFRESH),
+              MOVE_REFRESH,
+              MOVE_HEAT_WAVE,
+              MOVE_SIGNAL_BEAM),
 
     egg_moves(MAREEP,
               MOVE_TAKE_DOWN,
@@ -699,7 +701,8 @@ const u16 gEggMoves[] = {
               MOVE_BEAT_UP,
               MOVE_PSYCH_UP,
               MOVE_WISH,
-              MOVE_MAGIC_COAT),
+              MOVE_MAGIC_COAT,
+              MOVE_DOUBLE_KICK),
 
     egg_moves(PINECO,
               MOVE_REFLECT,
