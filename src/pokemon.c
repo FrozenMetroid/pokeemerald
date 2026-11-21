@@ -3119,6 +3119,16 @@ static const u16 sMovesBoostedByArtillery[] = {
     // MOVE_FICKLE_BEAM,
 };
 
+static const u16 sMovesBoostedByStrongJaw[] = {
+    MOVE_BITE,
+    MOVE_CRUNCH,
+    MOVE_POISON_FANG,
+    MOVE_HYPER_FANG,
+    // MOVE_FIRE_FANG,
+    // MOVE_ICE_FANG,
+    // MOVE_THUNDER_FANG,
+};
+
 s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *defender, u32 move, u16 sideStatus, u16 powerOverride, u8 typeOverride, u8 battlerIdAtk, u8 battlerIdDef)
 {
     u32 i;
@@ -3435,6 +3445,13 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     } else if (attacker->ability == ABILITY_ARTILLERY) {
         for (i = 0; i < ARRAY_COUNT(sMovesBoostedByArtillery); i++) {
             if (gCurrentMove == sMovesBoostedByArtillery[i]) {
+                damage = (13 * damage) / 10;
+                break;
+            }
+        }
+    } else if (attacker->ability == ABILITY_STRONG_JAW) {
+        for (i = 0; i < ARRAY_COUNT(sMovesBoostedByStrongJaw); i++) {
+            if (gCurrentMove == sMovesBoostedByStrongJaw[i]) {
                 damage = (13 * damage) / 10;
                 break;
             }

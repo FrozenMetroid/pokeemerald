@@ -85,6 +85,7 @@ static const u8 sSkillLinkDescription[] = _("Hits more multi-hits.");
 static const u8 sScrappyDescription[] = _("Hits GHOST-type POKéMON.");
 static const u8 sHarvestDescription[] = _("Restores held BERRY.");
 static const u8 sArtilleryDescription[] = _("Powers up BEAM moves.");
+static const u8 sStrongJawDescription[] = _("Powers up biting moves.");
 
 
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -175,7 +176,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_SKILL_LINK] = _("SKILL LINK"),
     [ABILITY_SCRAPPY] = _("SCRAPPY"),
     [ABILITY_HARVEST] = _("HARVEST"),
-    [ABILITY_ARTILLERY] = _("ARTILLERY")
+    [ABILITY_ARTILLERY] = _("ARTILLERY"),
+    [ABILITY_STRONG_JAW] = _("STRONG JAW"),
 };
 
 const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
@@ -267,4 +269,5 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_SCRAPPY] = sScrappyDescription,
     [ABILITY_HARVEST] = sHarvestDescription,
     [ABILITY_ARTILLERY] = sArtilleryDescription,
+    [ABILITY_STRONG_JAW] = sStrongJawDescription,
 };
