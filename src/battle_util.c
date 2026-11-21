@@ -4042,8 +4042,6 @@ void CheckSturdyActivation(void)
             && gBattleMoveDamage >= gBattleMons[gBattlerTarget].hp)
         {
             gProtectStructs[gBattlerTarget].endured = TRUE;
-        } else {
-            gProtectStructs[gBattlerTarget].endured = FALSE;
         }
     }
 }

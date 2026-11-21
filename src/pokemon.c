@@ -3102,6 +3102,23 @@ void DeleteFirstMoveAndGiveMoveToBoxMon(struct BoxPokemon *boxMon, u16 move)
     (var) /= (gStatStageRatios)[(mon)->statStages[(statIndex)]][1];                 \
 }
 
+static const u16 sMovesBoostedByArtillery[] = {
+    MOVE_ICE_BEAM,
+    MOVE_PSYBEAM,
+    MOVE_BUBBLE_BEAM,
+    MOVE_AURORA_BEAM,
+    MOVE_HYPER_BEAM,
+    MOVE_SOLAR_BEAM,
+    // MOVE_OCTAZOOKA, not an energy beam unfortunately
+    MOVE_SIGNAL_BEAM,
+    // MOVE_CHARGE_BEAM,
+    // MOVE_ETERNABEAM,
+    // MOVE_STEEL_BEAM,
+    // MOVE_METEOR_BEAM,
+    // MOVE_TWIN_BEAM,
+    // MOVE_FICKLE_BEAM,
+};
+
 s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *defender, u32 move, u16 sideStatus, u16 powerOverride, u8 typeOverride, u8 battlerIdAtk, u8 battlerIdDef)
 {
     u32 i;
@@ -3415,6 +3432,13 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     } else if (defender->ability == ABILITY_HEATPROOF) {
         if (type == TYPE_FIRE)
             damage /= 2;
+    } else if (attacker->ability == ABILITY_ARTILLERY) {
+        for (i = 0; i < ARRAY_COUNT(sMovesBoostedByArtillery); i++) {
+            if (gCurrentMove == sMovesBoostedByArtillery[i]) {
+                damage = (13 * damage) / 10;
+                break;
+            }
+        }
     }
 
     #ifdef DEBUG_BATTLE
