@@ -33,7 +33,7 @@ All credits for the decompilation efforts lie with the contributors of pokeemera
 ### General Mechanics
 - Trainer Data overhaul: can now specify nature, ability, IVs/EVs, etc.
 - Updated spread moves (Earthquake, Surf, etc.) to deal 75% damage in double battles rather than 50%
-- Added Physical/Special split
+- Added Physical/Special split (note: not reflected visually in-game)
 
 ### Moves
 - Air Cutter: BP increased from 55 to 65
