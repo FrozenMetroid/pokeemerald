@@ -238,6 +238,7 @@ EWRAM_DATA struct BattleHealthboxInfo *gBattleControllerOpponentFlankHealthboxDa
 EWRAM_DATA u16 gBattleMovePower = 0;
 EWRAM_DATA u16 gMoveToLearn = 0;
 EWRAM_DATA u8 gBattleMonForms[MAX_BATTLERS_COUNT] = {0};
+EWRAM_DATA u16 gPlayerPartyItems[PARTY_SIZE] = {0};
 
 COMMON_DATA MainCallback gPreBattleCallback1 = NULL;
 COMMON_DATA void (*gBattleMainFunc)(void) = NULL;
@@ -3477,6 +3478,12 @@ static void BattleIntroDrawTrainersOrMonsSprites(void)
     if (gBattleControllerExecFlags)
         return;
 
+    // new to senate emerald
+    // store the item you go into battle with
+    for (i = 0; i < gPlayerPartyCount; i++) {
+        gPlayerPartyItems[i] = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
+    }
+
     for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++)
     {
         if ((gBattleTypeFlags & BATTLE_TYPE_SAFARI)
@@ -5044,8 +5051,16 @@ static void RunTurnActionsFunctions(void)
 
 static void HandleEndTurn_BattleWon(void)
 {
+    s32 i;
     gCurrentActionFuncId = 0;
 
+    // new for senate emerald
+    // give back items from start
+    for (i = 0; i < gPlayerPartyCount; i++) {
+        if (!(IsItemBerry(gPlayerPartyItems[i]) || IsItemMail(gPlayerPartyItems[i])))
+            SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &gPlayerPartyItems[i]);
+    }
+    
     if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK))
     {
         gSpecialVar_Result = gBattleOutcome;

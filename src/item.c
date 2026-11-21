@@ -956,3 +956,8 @@ bool8 IsItemBerry(u16 itemId)
 {
     return gItems[SanitizeItemId(itemId)].pocket == POCKET_BERRIES;
 }
+
+bool8 IsItemMail(u16 itemId)
+{
+    return (itemId >= ITEM_ORANGE_MAIL && itemId <= ITEM_RETRO_MAIL);
+}

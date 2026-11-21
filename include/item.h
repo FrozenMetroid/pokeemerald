@@ -76,6 +76,7 @@ u8 GetItemBattleUsage(u16 itemId);
 ItemUseFunc GetItemBattleFunc(u16 itemId);
 u8 GetItemSecondaryId(u16 itemId);
 bool8 IsItemBerry(u16 itemId);
+bool8 IsItemMail(u16 itemId);
 
 /* Expands to:
  * enum

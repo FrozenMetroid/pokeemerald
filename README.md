@@ -44,6 +44,7 @@ All credits for the decompilation efforts lie with the contributors of pokeemera
   - Gives Ice-types a 50% defense boost
 - Sandstorm
   - Gives Rock-types a 50% special defense boost
+- Items are restored at the end of battle
 
 ### Moves
 - Air Cutter: BP increased from 55 to 65
