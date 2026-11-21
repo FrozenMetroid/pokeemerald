@@ -5675,6 +5675,7 @@ const union {
         .REFLECT = TRUE,
         .FLAMETHROWER = TRUE,
         .FIRE_BLAST = TRUE,
+        .ROCK_TOMB = TRUE,
         .FACADE = TRUE,
         .SECRET_POWER = TRUE,
         .REST = TRUE,

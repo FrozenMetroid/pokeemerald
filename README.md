@@ -44,11 +44,12 @@ All credits for the decompilation efforts lie with the contributors of pokeemera
   - Gives Ice-types a 50% defense boost
 - Sandstorm
   - Gives Rock-types a 50% special defense boost
-- Items are restored at the end of battle
+- Items are restored at the end of battle, except for Berries and Mail (if the latter can even be removed in the first place)
 
 ### Moves
 - Air Cutter: BP increased from 55 to 65
 - Ancient Power: BP increased from 60 to 65, PP increased from 5 to 15
+- Blizzard: Perfectly accurate in Hail
 - Cut: Type changed from Normal to Steel, accuracy increased from 95 to 100
 - Fly: BP increased from 70 to 90, accuracy increased from 95 to 100
 - Fury Cutter: BP increased from 10 to 30, maximum damage set to 160
@@ -59,6 +60,7 @@ All credits for the decompilation efforts lie with the contributors of pokeemera
 - Rock Smash: BP increased from 20 to 50
 - Silver Wind: BP increased from 60 to 65, PP increased from 5 to 15
 - Shadow Punch: BP increased from 60 to 80
+- Triple Kick: BP increased from 10 to 15 (60BP to 75BP)
 
 ### Pokémon
 - Stats for almost every Pokémon have been changed to buff weaker choices
