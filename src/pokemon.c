@@ -3129,6 +3129,21 @@ static const u16 sMovesBoostedByStrongJaw[] = {
     // MOVE_THUNDER_FANG,
 };
 
+static const u16 sMovesBoostedByIronFist[] = {
+    MOVE_COMET_PUNCH,
+    MOVE_DIZZY_PUNCH,
+    MOVE_DYNAMIC_PUNCH,
+    MOVE_FIRE_PUNCH,
+    MOVE_FOCUS_PUNCH,
+    MOVE_ICE_PUNCH,
+    MOVE_MACH_PUNCH,
+    MOVE_MEGA_PUNCH,
+    MOVE_SHADOW_PUNCH,
+    MOVE_SKY_UPPERCUT,
+    MOVE_THUNDER_PUNCH,
+    // MOVE_DRAIN_PUNCH,
+};
+
 s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *defender, u32 move, u16 sideStatus, u16 powerOverride, u8 typeOverride, u8 battlerIdAtk, u8 battlerIdDef)
 {
     u32 i;
@@ -3456,6 +3471,16 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
                 break;
             }
         }
+    } else if (attacker->ability == ABILITY_IRON_FIST) {
+        for (i = 0; i < ARRAY_COUNT(sMovesBoostedByIronFist); i++) {
+            if (gCurrentMove == sMovesBoostedByIronFist[i]) {
+                damage = (13 * damage) / 10;
+                break;
+            }
+        }
+    } else if (attacker->ability == ABILITY_RECKLESS) {
+        if (gBattleMoves[gCurrentMove].effect == EFFECT_RECOIL || gBattleMoves[gCurrentMove].effect == EFFECT_RECOIL_IF_MISS)
+            damage = (12 * damage) / 10;
     }
 
     #ifdef DEBUG_BATTLE

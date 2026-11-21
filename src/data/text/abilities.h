@@ -86,7 +86,8 @@ static const u8 sScrappyDescription[] = _("Hits GHOST-type POKéMON.");
 static const u8 sHarvestDescription[] = _("Restores held BERRY.");
 static const u8 sArtilleryDescription[] = _("Powers up BEAM moves.");
 static const u8 sStrongJawDescription[] = _("Powers up biting moves.");
-
+static const u8 sIronFistDescription[] = _("Powers up punching moves.");
+static const u8 sRecklessDescription[] = _("Ups moves with recoil.");
 
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
 {
@@ -178,6 +179,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_HARVEST] = _("HARVEST"),
     [ABILITY_ARTILLERY] = _("ARTILLERY"),
     [ABILITY_STRONG_JAW] = _("STRONG JAW"),
+    [ABILITY_IRON_FIST] = _("IRON FIST"),
+    [ABILITY_RECKLESS] = _("RECKLESS"),
 };
 
 const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
@@ -270,4 +273,6 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_HARVEST] = sHarvestDescription,
     [ABILITY_ARTILLERY] = sArtilleryDescription,
     [ABILITY_STRONG_JAW] = sStrongJawDescription,
+    [ABILITY_IRON_FIST] = sIronFistDescription,
+    [ABILITY_RECKLESS] = sRecklessDescription,
 };
