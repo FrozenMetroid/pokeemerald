@@ -6,6 +6,11 @@ All credits for the decompilation efforts lie with the contributors of pokeemera
 
 # Senate/Frozen_Metroid Changes:
 
+## Bug/Issue Fixes
+
+- All bugs identified by the pokeemerald contributors have been fixed
+- Omanyte's missing pixel has been filled in
+
 ## Battle
 
 ### Abilities
@@ -34,6 +39,11 @@ All credits for the decompilation efforts lie with the contributors of pokeemera
 - Trainer Data overhaul: can now specify nature, ability, IVs/EVs, etc.
 - Updated spread moves (Earthquake, Surf, etc.) to deal 75% damage in double battles rather than 50%
 - Added Physical/Special split (note: not reflected visually in-game)
+- Hail
+  - Makes Blizzard perfectly accurate
+  - Gives Ice-types a 50% defense boost
+- Sandstorm
+  - Gives Rock-types a 50% special defense boost
 
 ### Moves
 - Air Cutter: BP increased from 55 to 65

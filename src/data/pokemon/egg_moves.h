@@ -290,7 +290,8 @@ const u16 gEggMoves[] = {
               MOVE_BARRIER,
               MOVE_RAPID_SPIN,
               MOVE_SCREECH,
-              MOVE_ICICLE_SPEAR),
+              MOVE_ICICLE_SPEAR,
+              MOVE_ROCK_BLAST),
 
     egg_moves(GASTLY,
               MOVE_PSYWAVE,

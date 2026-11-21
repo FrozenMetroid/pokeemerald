@@ -3230,6 +3230,20 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     if (gBattleMoves[gCurrentMove].effect == EFFECT_EXPLOSION)
         defense /= 2;
 
+    // Weather stat modification
+    if (WEATHER_HAS_EFFECT) {
+        if (gBattleWeather & B_WEATHER_SANDSTORM) {
+            if (defender->types[0] == TYPE_ROCK || defender->types[1] == TYPE_ROCK) {
+                spDefense = (15 * spDefense) / 10;
+            }
+        }
+        if (gBattleWeather & B_WEATHER_HAIL) {
+            if (defender->types[0] == TYPE_ICE || defender->types[1] == TYPE_ICE) {
+                defense = (15 * defense) / 10;
+            }
+        }
+    }
+    
     if (IS_MOVE_PHYSICAL(split))
     {
         if (gCritMultiplier == 2)

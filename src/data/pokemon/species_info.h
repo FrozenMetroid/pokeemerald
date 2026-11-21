@@ -2649,10 +2649,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_GRIMER] =
     {
         .baseHP        = 80,
-        .baseAttack    = 80,
+        .baseAttack    = 40,
         .baseDefense   = 60,
         .baseSpeed     = 25,
-        .baseSpAttack  = 40,
+        .baseSpAttack  = 80,
         .baseSpDefense = 80,
         .types = { TYPE_POISON, TYPE_POISON },
         .catchRate = 190,
@@ -2679,10 +2679,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_MUK] =
     {
         .baseHP        = 105,
-        .baseAttack    = 105,
+        .baseAttack    = 65,
         .baseDefense   = 75,
         .baseSpeed     = 50,
-        .baseSpAttack  = 65,
+        .baseSpAttack  = 105,
         .baseSpDefense = 100,
         .types = { TYPE_POISON, TYPE_POISON },
         .catchRate = 75,
