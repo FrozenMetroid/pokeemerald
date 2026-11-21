@@ -3579,97 +3579,153 @@ static const struct TrainerMonExpanded sParty_Winona1[] = {
     .evs = {0, 80, 0, 80, 0, 0},
     },
     {
-    .lvl = 29,
+    .lvl = 33,
     .species = SPECIES_PELIPPER,
     .heldItem = ITEM_NONE,
-    .moves = {MOVE_SUNNY_DAY, MOVE_AERIAL_ACE, MOVE_SOLAR_BEAM, MOVE_SYNTHESIS}
+    .moves = {MOVE_WATER_PULSE, MOVE_AIR_CUTTER, MOVE_STOCKPILE, MOVE_SWALLOW},
+    .ball = ITEM_POKE_BALL,
+    TRAINER_ABILITY_SET(ABILITY_KEEN_EYE),
+    .nature = NATURE_BOLD,
+    .ivs = {25, 25, 25, 25, 25, 25},
+    .evs = {0, 0, 80, 0, 80, 0},
     },
     {
-    .lvl = 30,
-    .species = SPECIES_PELIPPER,
+    .lvl = 35,
+    .species = SPECIES_TROPIUS,
     .heldItem = ITEM_NONE,
-    .moves = {MOVE_WATER_GUN, MOVE_SUPERSONIC, MOVE_PROTECT, MOVE_AERIAL_ACE}
+    .moves = {MOVE_LEAF_BLADE, MOVE_AERIAL_ACE, MOVE_BODY_SLAM, MOVE_WHIRLWIND},
+    .ball = ITEM_POKE_BALL,
+    TRAINER_ABILITY_SET(ABILITY_THICK_FAT),
+    .nature = NATURE_ADAMANT,
+    .ivs = {25, 25, 25, 25, 25, 25},
+    .evs = {80, 80, 0, 0, 0, 0},
     },
     {
-    .lvl = 31,
+    .lvl = 34,
     .species = SPECIES_SKARMORY,
     .heldItem = ITEM_NONE,
-    .moves = {MOVE_SAND_ATTACK, MOVE_FURY_ATTACK, MOVE_STEEL_WING, MOVE_AERIAL_ACE}
+    .moves = {MOVE_WHIRLWIND, MOVE_SPIKES, MOVE_STEEL_WING, MOVE_AERIAL_ACE},
+    .ball = ITEM_POKE_BALL,
+    TRAINER_ABILITY_SET(ABILITY_STURDY),
+    .nature = NATURE_ADAMANT,
+    .ivs = {25, 25, 25, 25, 25, 25},
+    .evs = {80, 80, 0, 0, 0, 0},
     },
     {
-    .lvl = 33,
+    .lvl = 36,
     .species = SPECIES_ALTARIA,
-    .heldItem = ITEM_ORAN_BERRY,
-    .moves = {MOVE_EARTHQUAKE, MOVE_DRAGON_BREATH, MOVE_DRAGON_DANCE, MOVE_AERIAL_ACE}
+    .heldItem = ITEM_SITRUS_BERRY,
+    .moves = {MOVE_SING, MOVE_ICE_BEAM, MOVE_AIR_CUTTER, MOVE_FLAMETHROWER},
+    .ball = ITEM_ULTRA_BALL,
+    TRAINER_ABILITY_SET(ABILITY_NATURAL_CURE),
+    .nature = NATURE_MODEST,
+    .ivs = {31, 31, 31, 31, 31, 31},
+    .evs = {100, 0, 0, 0, 100, 0},
     }
 };
 
 static const struct TrainerMonExpanded sParty_TateAndLiza1[] = {
     {
-    .iv = 250,
     .lvl = 41,
     .species = SPECIES_CLAYDOL,
     .heldItem = ITEM_NONE,
-    .moves = {MOVE_EARTHQUAKE, MOVE_ANCIENT_POWER, MOVE_PSYCHIC, MOVE_LIGHT_SCREEN}
+    .moves = {MOVE_EARTHQUAKE, MOVE_ANCIENT_POWER, MOVE_PSYCHIC, MOVE_REFLECT},
+    .ball = ITEM_POKE_BALL,
+    TRAINER_ABILITY_SET(ABILITY_LEVITATE),
+    .nature = NATURE_SASSY,
+    .ivs = {31, 31, 31, 31, 31, 31},
+    .evs = {100, 80, 0, 0, 80, 80},
     },
     {
-    .iv = 250,
     .lvl = 41,
     .species = SPECIES_XATU,
     .heldItem = ITEM_NONE,
-    .moves = {MOVE_PSYCHIC, MOVE_SUNNY_DAY, MOVE_CONFUSE_RAY, MOVE_CALM_MIND}
+    .moves = {MOVE_PSYCHIC, MOVE_AIR_CUTTER, MOVE_SHADOW_BALL, MOVE_CALM_MIND},
+    .ball = ITEM_POKE_BALL,
+    TRAINER_ABILITY_SET(ABILITY_SYNCHRONIZE),
+    .nature = NATURE_MODEST,
+    .ivs = {31, 31, 31, 31, 31, 31},
+    .evs = {0, 0, 0, 100, 100, 0},
     },
     {
-    .iv = 250,
     .lvl = 42,
     .species = SPECIES_LUNATONE,
     .heldItem = ITEM_SITRUS_BERRY,
-    .moves = {MOVE_LIGHT_SCREEN, MOVE_PSYCHIC, MOVE_HYPNOSIS, MOVE_CALM_MIND}
+    .moves = {MOVE_MOONLIGHT, MOVE_PSYCHIC, MOVE_ANCIENT_POWER, MOVE_CALM_MIND},
+    .ball = ITEM_ULTRA_BALL,
+    TRAINER_ABILITY_SET(ABILITY_LEVITATE),
+    .nature = NATURE_MODEST,
+    .ivs = {31, 31, 31, 31, 31, 31},
+    .evs = {120, 0, 0, 0, 80, 80},
     },
     {
-    .iv = 250,
     .lvl = 42,
     .species = SPECIES_SOLROCK,
     .heldItem = ITEM_SITRUS_BERRY,
-    .moves = {MOVE_SUNNY_DAY, MOVE_SOLAR_BEAM, MOVE_PSYCHIC, MOVE_FLAMETHROWER}
+    .moves = {MOVE_SUNNY_DAY, MOVE_SOLAR_BEAM, MOVE_ROCK_SLIDE, MOVE_FLAME_WHEEL},
+    .ball = ITEM_ULTRA_BALL,
+    TRAINER_ABILITY_SET(ABILITY_LEVITATE),
+    .nature = NATURE_SERIOUS,
+    .ivs = {31, 31, 31, 31, 31, 31},
+    .evs = {120, 120, 0, 0, 80, 0},
     }
 };
 
 static const struct TrainerMonExpanded sParty_Juan1[] = {
     {
-    .iv = 200,
-    .lvl = 41,
+    .lvl = 42,
     .species = SPECIES_LUVDISC,
     .heldItem = ITEM_NONE,
-    .moves = {MOVE_WATER_PULSE, MOVE_ATTRACT, MOVE_SWEET_KISS, MOVE_FLAIL}
+    .moves = {MOVE_WATER_PULSE, MOVE_ATTRACT, MOVE_CHARM, MOVE_ICE_BEAM},
+    .ball = ITEM_POKE_BALL,
+    TRAINER_ABILITY_SET(ABILITY_SWIFT_SWIM),
+    .nature = NATURE_MODEST,
+    .ivs = {31, 31, 31, 31, 31, 31},
+    .evs = {0, 0, 0, 120, 120, 0},
     },
     {
-    .iv = 200,
-    .lvl = 41,
-    .species = SPECIES_WHISCASH,
-    .heldItem = ITEM_NONE,
-    .moves = {MOVE_RAIN_DANCE, MOVE_WATER_PULSE, MOVE_AMNESIA, MOVE_EARTHQUAKE}
-    },
-    {
-    .iv = 200,
     .lvl = 43,
-    .species = SPECIES_SEALEO,
+    .species = SPECIES_LANTURN,
     .heldItem = ITEM_NONE,
-    .moves = {MOVE_ENCORE, MOVE_BODY_SLAM, MOVE_AURORA_BEAM, MOVE_WATER_PULSE}
+    .moves = {MOVE_CONFUSE_RAY, MOVE_WATER_PULSE, MOVE_THUNDERBOLT, MOVE_RAIN_DANCE},
+    .ball = ITEM_POKE_BALL,
+    TRAINER_ABILITY_SET(ABILITY_VOLT_ABSORB),
+    .nature = NATURE_MODEST,
+    .ivs = {31, 31, 31, 31, 31, 31},
+    .evs = {120, 0, 0, 0, 120, 0},
     },
     {
-    .iv = 200,
+    .lvl = 44,
+    .species = SPECIES_SWAMPERT,
+    .heldItem = ITEM_NONE,
+    .moves = {MOVE_EARTHQUAKE, MOVE_WATERFALL, MOVE_ICE_PUNCH, MOVE_ROCK_SLIDE},
+    .ball = ITEM_POKE_BALL,
+    TRAINER_ABILITY_SET(ABILITY_TORRENT),
+    .nature = NATURE_ADAMANT,
+    .ivs = {31, 31, 31, 31, 31, 31},
+    .evs = {120, 120, 0, 0, 0, 0},
+    },
+    {
     .lvl = 43,
-    .species = SPECIES_CRAWDAUNT,
+    .species = SPECIES_MANTINE,
     .heldItem = ITEM_NONE,
-    .moves = {MOVE_WATER_PULSE, MOVE_CRABHAMMER, MOVE_TAUNT, MOVE_LEER}
+    .moves = {MOVE_WATER_PULSE, MOVE_AIR_CUTTER, MOVE_RAIN_DANCE, MOVE_ICE_BEAM},
+    .ball = ITEM_POKE_BALL,
+    TRAINER_ABILITY_SET(ABILITY_SWIFT_SWIM),
+    .nature = NATURE_CALM,
+    .ivs = {31, 31, 31, 31, 31, 31},
+    .evs = {0, 0, 0, 0, 120, 120},
     },
     {
-    .iv = 250,
     .lvl = 46,
-    .species = SPECIES_KINGDRA,
-    .heldItem = ITEM_CHESTO_BERRY,
-    .moves = {MOVE_WATER_PULSE, MOVE_DOUBLE_TEAM, MOVE_ICE_BEAM, MOVE_REST}
+    .species = SPECIES_CRAWDAUNT,
+    .heldItem = ITEM_SITRUS_BERRY,
+    .moves = {MOVE_CRABHAMMER, MOVE_SWORDS_DANCE, MOVE_CRUNCH, MOVE_AERIAL_ACE},
+    .ball = ITEM_DIVE_BALL,
+    TRAINER_ABILITY_SET(ABILITY_HYPER_CUTTER),
+    .nature = NATURE_ADAMANT,
+    .ivs = {31, 31, 31, 31, 31, 31},
+    .evs = {140, 140, 0, 0, 0, 0},
     }
 };
 

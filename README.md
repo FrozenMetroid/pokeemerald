@@ -28,6 +28,7 @@ All credits for the decompilation efforts lie with the contributors of pokeemera
     - Rhydon, Camerupt, and Regirock
 - Changes to Abilities
   - Sturdy prevents OHKOs at full health, like generation 5 and onward
+  - Overgrow, Torrent, Blaze, and Swarm always give a 20% boost to their respective types
 
 ### General Mechanics
 - Trainer Data overhaul: can now specify nature, ability, IVs/EVs, etc.
