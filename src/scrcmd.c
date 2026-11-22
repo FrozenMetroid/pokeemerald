@@ -2324,3 +2324,58 @@ bool8 ScrCmd_reactivateroamer(struct ScriptContext *ctx) // reactivates the same
     gSaveBlock1Ptr->roamer.active = TRUE;
     return FALSE;
 }
+
+typedef enum {
+    CHECK_SINGLE_IV,
+    CHECK_ALL_IVS,
+    SET_SINGLE_IV,
+    SET_ALL_IVS
+} BottleCapAction;
+
+bool8 ScrCmd_bottlecapaction(struct ScriptContext *ctx)
+{
+    s32 i;
+    u8 ivValue = 31;
+    u8 numStatsAtMax = 0;
+
+    u8 action = ScriptReadByte(ctx);
+    u16 slot = VarGet(ScriptReadHalfword(ctx));
+    u16 stat = VarGet(ScriptReadHalfword(ctx));
+    u16 *result = GetVarPointer(VAR_RESULT);
+
+    *result = 0;
+
+    switch (action)
+    {
+        case CHECK_SINGLE_IV:
+            if (GetMonData(&gPlayerParty[slot], MON_DATA_HP_IV + stat) == ivValue) {
+                *result = TRUE;
+            }
+            break;
+        case CHECK_ALL_IVS:
+            for (i = 0; i < 6; i++)
+            {
+                if (GetMonData(&gPlayerParty[slot], MON_DATA_HP_IV + i) == ivValue)
+                {
+                    numStatsAtMax++;
+                }
+            }
+            if (numStatsAtMax == 6)
+            {
+                *result = TRUE;
+            }
+            break;
+        case SET_SINGLE_IV:
+            SetMonData(&gPlayerParty[slot], MON_DATA_HP_IV + stat, &ivValue);
+            CalculateMonStats(&gPlayerParty[slot]);
+            break;
+        case SET_ALL_IVS:
+            for (i = 0; i < 6; i++)
+            {
+                SetMonData(&gPlayerParty[slot], MON_DATA_HP_IV + i, &ivValue);
+            }
+            CalculateMonStats(&gPlayerParty[slot]);
+            break;
+    }
+    return FALSE;
+}

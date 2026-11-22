@@ -1,6 +1,145 @@
+mapscripts BattleFrontier_Lounge6_MapScripts {}
+
+script BattleFrontier_Lounge6_BottleCapGuy {
+	lockall
+	faceplayer
+	msgbox("Hello! I am a bottle cap fanatic!
+	Have you brought me any?$")
+	checkitem(ITEM_SILVER_CAP, 1)
+	goto_if_eq(VAR_RESULT, FALSE, BattleFrontier_Lounge6_EventScript_CheckGoldBottleCaps)
+	// you have a silver cap, but now check if you also have a gold cap
+	checkitem(ITEM_GOLD_CAP, 1)
+	goto_if_eq(VAR_RESULT, TRUE, BattleFrontier_Lounge6_EventScript_ChooseBottleCap)
+	// only have a silver cap
+	setvar(VAR_TEMP_0, ITEM_SILVER_CAP)
+	msgbox("Ah! You have brought me a silver cap!")
+BattleFrontier_Lounge6_EventScript_YesNoGiveBottleCap:
+	msgbox("Would you like to give me the 
+	bottle cap?$", MSGBOX_YESNO)
+	goto_if_eq(VAR_RESULT, 0, BattleFrontier_Lounge6_EventScript_DeclineBottleCap)
+	// Logic for giving the bottle cap goes here
+	removeitem(VAR_TEMP_0, 1)
+	msgbox("Thank you! I will cherish it!
+	
+	Now, which POKéMON would you like me 
+	to train?$")
+	special(ChoosePartyMon)
+	copyvar(VAR_0x800A, VAR_0x8004)
+	if (var(VAR_0x800A) == PARTY_NOTHING_CHOSEN) {
+		msgbox("Awh, you didn't choose a POKéMON!")
+		call(BattleFrontier_Lounge6_EventScript_GiveBackBottleCap)
+		goto(BattleFrontier_Lounge6_EventScript_End)
+	}
+	if (var(VAR_TEMP_0) == ITEM_GOLD_CAP) {
+		bottlecapaction(CHECK_ALL_IVS, VAR_0x800A, 0)
+		if (var(VAR_RESULT) == TRUE) { // if all IVs are maxxed out already
+			msgbox("Your POKéMON is already fully trained!
+			I can't help it anymore!$")
+			call(BattleFrontier_Lounge6_EventScript_GiveBackBottleCap)
+			goto(BattleFrontier_Lounge6_EventScript_End)
+		}
+		bottlecapaction(SET_ALL_IVS, VAR_0x800A, 0)
+		call(BattleFrontier_Lounge6_EventScript_StatTrainedJingle)
+		msgbox("Your POKéMON has been fully trained!$")
+		goto(BattleFrontier_Lounge6_EventScript_End)
+	} elif (var(VAR_TEMP_0) == ITEM_SILVER_CAP) {
+		msgbox("Great! I will train your POKéMON now!
+		What stat should I train?$")
+		multichoice(22, 0, MULTI_STAT_SELECTION, TRUE)
+		switch (var(VAR_0x8004)) {
+			case 0: // Sp.Def
+				setvar(VAR_0x8004, 5) // have to flip it because the bottom of the list is 0 rather than the top
+			case 1: // Sp.Atk
+				setvar(VAR_0x8004, 4)
+			case 2: // speed
+				setvar(VAR_0x8004, 3)
+			case 3: // defense
+				setvar(VAR_0x8004, 2)
+			case 4: // attack
+				setvar(VAR_0x8004, 1)
+			case 5: // hp
+				setvar(VAR_0x8004, 0)
+		}
+		bottlecapaction(CHECK_SINGLE_IV, VAR_0x800A, VAR_0x8004)
+		if (var(VAR_RESULT) == TRUE) {
+			msgbox("This stat is already maxed out!$")
+			call(BattleFrontier_Lounge6_EventScript_GiveBackBottleCap)
+			goto(BattleFrontier_Lounge6_EventScript_End)
+		} else {
+			bottlecapaction(SET_SINGLE_IV, VAR_0x800A, VAR_0x8004)
+			call(BattleFrontier_Lounge6_EventScript_StatTrainedJingle)
+			msgbox("Your POKéMON's stat has been trained!$")
+			goto(BattleFrontier_Lounge6_EventScript_End)
+		}
+	} else {
+		msgbox("Oh, that's too bad!$")
+		call(BattleFrontier_Lounge6_EventScript_GiveBackBottleCap)
+	}
+BattleFrontier_Lounge6_EventScript_End:
+	release
+	end
+
+BattleFrontier_Lounge6_EventScript_DeclineBottleCap:
+	msgbox("Oh, that's too bad!$")
+	release
+	end
+}
+
+script BattleFrontier_Lounge6_EventScript_CheckGoldBottleCaps {
+	checkitem(ITEM_GOLD_CAP, 1)
+	goto_if_eq(VAR_RESULT, FALSE, BattleFrontier_Lounge6_EventScript_NoBottleCaps)
+	// only have a gold cap
+	setvar(VAR_TEMP_0, ITEM_GOLD_CAP)
+	msgbox("Ah! You have brought me a gold cap!")
+	goto(BattleFrontier_Lounge6_EventScript_YesNoGiveBottleCap)
+}
+
+script BattleFrontier_Lounge6_EventScript_NoBottleCaps {
+	msgbox("You haven't brought me any bottle caps.
+	That's disappointing!$")
+	release
+	end
+}
+
+script BattleFrontier_Lounge6_EventScript_ChooseBottleCap {
+	msgbox("Oh! You have brought me a bottle cap!
+	What kind is it?$")
+	multichoice(22, 6, MULTI_BOTTLE_CAP_TYPE, TRUE)
+	copyvar(VAR_0x8005, VAR_RESULT)
+	switch (var(VAR_RESULT)) {
+		case 0:
+			setvar(VAR_TEMP_0, ITEM_SILVER_CAP)
+			goto(BattleFrontier_Lounge6_EventScript_YesNoGiveBottleCap)
+			break
+		case 1:
+			setvar(VAR_TEMP_0, ITEM_GOLD_CAP)
+			goto(BattleFrontier_Lounge6_EventScript_YesNoGiveBottleCap)
+			break
+		default:
+			msgbox("Awh, really? No way!$")
+			release
+			end
+	}
+}
+
+script BattleFrontier_Lounge6_EventScript_StatTrainedJingle {
+	playfanfare(MUS_LEVEL_UP)
+	waitfanfare
+	return
+}
+
+text BattleFrontier_Lounge6_Text_GiveBackCap {
+	"Let me give you back your
+	bottle cap…$"
+}
+
+script BattleFrontier_Lounge6_EventScript_GiveBackBottleCap {
+	msgbox(BattleFrontier_Lounge6_Text_GiveBackCap)
+	giveitem(VAR_TEMP_0, 1)
+	return
+}
+
 raw `
-BattleFrontier_Lounge6_MapScripts::
-	.byte 0
 
 BattleFrontier_Lounge6_EventScript_Trader::
 	lock

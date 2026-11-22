@@ -218,6 +218,7 @@ PetalburgCity_Movement_WallyTutorialWally:
 	step_end
 
 PetalburgCity_EventScript_GymSign::
+	warp MAP_BATTLE_FRONTIER_EXCHANGE_SERVICE_CORNER, 7, 7
 	msgbox PetalburgCity_Text_GymSign, MSGBOX_SIGN
 	end
 

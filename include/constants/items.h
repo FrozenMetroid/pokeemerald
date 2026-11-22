@@ -124,8 +124,8 @@ enum {
     ITEM_STAR_PIECE,
     ITEM_NUGGET,
     ITEM_HEART_SCALE,
-    ITEM_070,
-    ITEM_071,
+    ITEM_SILVER_CAP,
+    ITEM_GOLD_CAP,
     ITEM_072,
     ITEM_073,
     ITEM_074,
@@ -408,6 +408,8 @@ enum {
     // Emerald
     ITEM_MAGMA_EMBLEM,
     ITEM_OLD_SEA_MAP,
+
+    // new to senate emerald
     ITEM_SHINY_CHARM,
 
     ITEMS_COUNT

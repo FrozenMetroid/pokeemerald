@@ -1559,3 +1559,13 @@ static const u8 sLinkingCordDesc[] = _(
     "A hold item that\n"
     "is loved by\n"
     "certain POKéMON.");
+
+static const u8 sSilverCapDesc[] = _(
+    "A rare cap that\n"
+    "is highly valued by\n"
+    "TRAINERS.");
+
+static const u8 sGoldCapDesc[] = _(
+    "A rare golden cap\n"
+    "that is highly\n"
+    "valued by TRAINERS.");

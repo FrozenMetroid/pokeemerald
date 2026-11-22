@@ -1370,23 +1370,23 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
-    [ITEM_070] =
+    [ITEM_SILVER_CAP] =
     {
-        .name = _("????????"),
-        .itemId = ITEM_NONE,
-        .price = 0,
-        .description = sDummyDesc,
+        .name = _("SILVER CAP"),
+        .itemId = ITEM_SILVER_CAP,
+        .price = 5000,
+        .description = sSilverCapDesc,
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
-    [ITEM_071] =
+    [ITEM_GOLD_CAP] =
     {
-        .name = _("????????"),
-        .itemId = ITEM_NONE,
-        .price = 0,
-        .description = sDummyDesc,
+        .name = _("GOLD CAP"),
+        .itemId = ITEM_GOLD_CAP,
+        .price = 10000,
+        .description = sGoldCapDesc,
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,

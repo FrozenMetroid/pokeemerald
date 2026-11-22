@@ -244,6 +244,7 @@ gScriptCmdTable::
 	script_cmd_table_entry SCR_OP_BUFFERITEMNAMEPLURAL          ScrCmd_bufferitemnameplural           @ 0xe2
 	script_cmd_table_entry SCR_OP_FILLPOKEDEX					ScrCmd_fillpokedex                    @ 0xe3
 	script_cmd_table_entry SCR_OP_REACTIVATEROAMER				ScrCmd_reactivateroamer               @ 0xe4
+	script_cmd_table_entry SCR_OP_BOTTLECAPACTION				ScrCmd_bottlecapaction                @ 0xe5
 
 	.if ALLOCATE_SCRIPT_CMD_TABLE
 gScriptCmdTableEnd::

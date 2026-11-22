@@ -220,6 +220,11 @@ const u32 gItemIconPalette_Nugget[] = INCGFX_U32("graphics/items/icon_palettes/n
 const u32 gItemIcon_HeartScale[] = INCGFX_U32("graphics/items/icons/heart_scale.png", ".4bpp.lz");
 const u32 gItemIconPalette_HeartScale[] = INCGFX_U32("graphics/items/icon_palettes/heart_scale.pal", ".gbapal.lz");
 
+const u32 gItemIcon_SilverCap[] = INCGFX_U32("graphics/items/icons/bottle_cap.png", ".4bpp.lz");
+const u32 gItemIconPalette_SilverCap[] = INCGFX_U32("graphics/items/icon_palettes/bottle_cap.pal", ".gbapal.lz");
+
+const u32 gItemIcon_GoldCap[] = INCGFX_U32("graphics/items/icons/gold_bottle_cap.png", ".4bpp.lz");
+const u32 gItemIconPalette_GoldCap[] = INCGFX_U32("graphics/items/icon_palettes/gold_bottle_cap.pal", ".gbapal.lz");
 // Mail
 
 const u32 gItemIcon_OrangeMail[] = INCGFX_U32("graphics/items/icons/orange_mail.png", ".4bpp.lz");

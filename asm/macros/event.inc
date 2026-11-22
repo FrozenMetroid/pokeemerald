@@ -1794,6 +1794,19 @@
 	.byte SCR_OP_REACTIVATEROAMER
 	.endm
 
+	@ handles bottle cap actions
+	.macro bottlecapaction action:req, slot:req, stat:req
+	.byte SCR_OP_BOTTLECAPACTION
+	.byte \action
+	.2byte \slot
+	.2byte \stat
+	.endm
+
+	CHECK_SINGLE_IV = 0
+	CHECK_ALL_IVS = 1
+	SET_SINGLE_IV = 2
+	SET_ALL_IVS = 3
+
 
 @ Supplementary
 
