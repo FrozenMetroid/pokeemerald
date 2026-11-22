@@ -30,6 +30,12 @@ EverGrandeCity_HallOfFame_EventScript_ResetDefeatedEventLegendaries::
 	clearflag FLAG_DEFEATED_DEOXYS
 	clearflag FLAG_DEFEATED_LUGIA
 	clearflag FLAG_DEFEATED_HO_OH
+	goto_if_set FLAG_DEFEATED_ROAMING_LATI, EverGrandeCity_HallOfFame_EventScript_AddRoamingLatiBack
+	return
+
+EverGrandeCity_HallOfFame_EventScript_AddRoamingLatiBack::
+	clearflag FLAG_DEFEATED_ROAMING_LATI
+	reactivateroamer
 	return
 
 EverGrandeCity_HallOfFame_EventScript_SetDesertUnderpassCommentReady::

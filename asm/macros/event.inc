@@ -1789,6 +1789,11 @@
 	.byte SCR_OP_FILLPOKEDEX
 	.endm
 
+	@ reactivates the roamer after beating the league if you KOd it
+	.macro reactivateroamer
+	.byte SCR_OP_REACTIVATEROAMER
+	.endm
+
 
 @ Supplementary
 

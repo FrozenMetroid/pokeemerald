@@ -2318,3 +2318,9 @@ bool8 ScrCmd_fillpokedex(struct ScriptContext *ctx)
     }
     return FALSE;
 }
+
+bool8 ScrCmd_reactivateroamer(struct ScriptContext *ctx) // reactivates the same roamer after beating the league
+{
+    gSaveBlock1Ptr->roamer.active = TRUE;
+    return FALSE;
+}

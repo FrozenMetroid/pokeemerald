@@ -63,7 +63,7 @@ MeteorFalls_StevensCave_Text_ShouldKnowHowGoodIAmExpectWorst:
 # 32 "data/maps/MeteorFalls_StevensCave/scripts.pory"
 	.string "We battled alongside each other at\n"
 # 33 "data/maps/MeteorFalls_StevensCave/scripts.pory"
-	.string "the SOOTOPOLIS SPACE CENTER.\p"
+	.string "the MOSSDEEP SPACE CENTER.\p"
 # 34 "data/maps/MeteorFalls_StevensCave/scripts.pory"
 	.string "You should have a very good idea\n"
 # 35 "data/maps/MeteorFalls_StevensCave/scripts.pory"

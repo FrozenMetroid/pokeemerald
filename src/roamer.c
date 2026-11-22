@@ -234,9 +234,11 @@ void UpdateRoamerHPStatus(struct Pokemon *mon)
     RoamerMoveToOtherLocationSet();
 }
 
-void SetRoamerInactive(void)
+void SetRoamerInactive(struct Pokemon *mon) // inactivate it but also restore its health for when you respawn it
 {
     ROAMER->active = FALSE;
+    ROAMER->hp = GetMonData(mon, MON_DATA_MAX_HP);
+    ROAMER->status = 0;
 }
 
 void GetRoamerLocation(u8 *mapGroup, u8 *mapNum)

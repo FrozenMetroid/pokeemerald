@@ -5340,7 +5340,12 @@ static void ReturnFromBattleToOverworld(void)
         if ((gBattleOutcome == B_OUTCOME_WON) || gBattleOutcome == B_OUTCOME_CAUGHT ||
             gBattleOutcome == B_OUTCOME_DREW)
 #endif
-            SetRoamerInactive();
+            SetRoamerInactive(&gEnemyParty[0]);
+            if (gBattleOutcome & B_OUTCOME_WON || gBattleOutcome & B_OUTCOME_DREW) {
+                FlagSet(FLAG_DEFEATED_ROAMING_LATI);
+            } else if (gBattleOutcome & B_OUTCOME_CAUGHT) {
+                FlagSet(FLAG_CAUGHT_ROAMING_LATI);
+            }
     }
 
     m4aSongNumStop(SE_LOW_HEALTH);
