@@ -197,34 +197,46 @@ static const struct {
 } sPokeOutbreakSpeciesList[] = {
     {
         .species = SPECIES_SEEDOT,
-        .moves = {MOVE_BIDE, MOVE_HARDEN, MOVE_LEECH_SEED},
+        .moves = {MOVE_BIDE, MOVE_HARDEN, MOVE_LEECH_SEED, MOVE_GROWTH},
         .level = 3,
         .location = MAP_NUM(MAP_ROUTE102)
-    },
-    {
-        .species = SPECIES_NUZLEAF,
-        .moves = {MOVE_HARDEN, MOVE_GROWTH, MOVE_NATURE_POWER, MOVE_LEECH_SEED},
-        .level = 15,
-        .location = MAP_NUM(MAP_ROUTE114),
-    },
-    {
-        .species = SPECIES_SEEDOT,
-        .moves = {MOVE_HARDEN, MOVE_GROWTH, MOVE_NATURE_POWER, MOVE_LEECH_SEED},
-        .level = 13,
-        .location = MAP_NUM(MAP_ROUTE117),
-    },
-    {
-        .species = SPECIES_SEEDOT,
-        .moves = {MOVE_GIGA_DRAIN, MOVE_FRUSTRATION, MOVE_SOLAR_BEAM, MOVE_LEECH_SEED},
-        .level = 25,
-        .location = MAP_NUM(MAP_ROUTE120),
     },
     {
         .species = SPECIES_SKITTY,
         .moves = {MOVE_GROWL, MOVE_TACKLE, MOVE_TAIL_WHIP, MOVE_ATTRACT},
         .level = 8,
         .location = MAP_NUM(MAP_ROUTE116),
-    }
+    },
+    {
+        .species = SPECIES_TREECKO,
+        .moves = {MOVE_POUND, MOVE_ABSORB, MOVE_QUICK_ATTACK, MOVE_CRUSH_CLAW},
+        .level = 10,
+        .location = MAP_NUM(MAP_ROUTE119),
+    },
+    {
+        .species = SPECIES_TORCHIC,
+        .moves = {MOVE_SCRATCH, MOVE_GROWL, MOVE_EMBER, MOVE_REVERSAL},
+        .level = 10,
+        .location = MAP_NUM(MAP_ROUTE121),
+    },
+    {
+        .species = SPECIES_MUDKIP,
+        .moves = {MOVE_TACKLE, MOVE_GROWL, MOVE_WATER_GUN, MOVE_YAWN},
+        .level = 10,
+        .location = MAP_NUM(MAP_ROUTE120),
+    },
+    {
+        .species = SPECIES_SURSKIT,
+        .moves = {MOVE_BUBBLE, MOVE_QUICK_ATTACK, MOVE_PSYBEAM, },
+        .level = 15,
+        .location = MAP_NUM(MAP_ROUTE114),
+    },
+    {
+        .species = SPECIES_BAGON,
+        .moves = {MOVE_DRAGON_RAGE, MOVE_DRAGON_BREATH, MOVE_HEADBUTT, MOVE_FLAMETHROWER },
+        .level = 35,
+        .location = MAP_NUM(MAP_METEOR_FALLS_B1F_2R),
+    },
 };
 
 static const u16 sGoldSymbolFlags[NUM_FRONTIER_FACILITIES] = {

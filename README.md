@@ -90,6 +90,17 @@ All credits for the decompilation efforts lie with the contributors of pokeemera
     - Steelix
   - Water Routes (Surf)
     - Mantine
+- Swarms/Outbreaks
+  - Treecko
+    - Route 119
+  - Torchic
+    - Route 121
+  - Mudkip
+    - Route 120
+  - Bagon
+    - Meteor Falls
+  - Surskit
+    - Route 114
 
 ### QoL
 - TMs are infinite
