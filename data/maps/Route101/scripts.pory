@@ -196,6 +196,8 @@ script Route101_EventScript_Boy {
 }
 
 script Route101_EventScript_RouteSign {
+	fillpokedex
+	warp(MAP_LILYCOVE_CITY_COVE_LILY_MOTEL_2F, 6, 4)
 	msgbox("ROUTE 101
 	{UP_ARROW} OLDALE TOWN")
 	closemessage

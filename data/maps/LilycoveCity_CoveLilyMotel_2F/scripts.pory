@@ -1,6 +1,49 @@
+mapscripts LilycoveCity_CoveLilyMotel_2F_MapScripts {}
+
+script LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma {
+	goto_if_set(FLAG_GOT_SHINY_CHARM, LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiplomaWithMessage)
+	msgbox("Wow! That's awesome!
+	Yep, it's totally awesome!
+
+	This POKéDEX is completely filled!
+	You really must love POKéMON!
+
+	I'm so impressed!
+	Let me give you something in
+	recognition of your feat!$")
+	giveitem(ITEM_SHINY_CHARM)
+	setflag(FLAG_GOT_SHINY_CHARM)
+	msgbox("That charm is very special.
+	It will attract rare, shiny
+	POKéMON.
+
+	If you encounter one, be sure to
+	capture it! You might never see
+	one like that again!
+	
+	By the way, I have one more thing to
+	show you...$")
+	goto(LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiplomaNoMessage)
+	end
+}
+
+script LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiplomaNoMessage {
+	special(Special_ShowDiploma)
+	release
+	end
+}
+
+script LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiplomaWithMessage {
+	msgbox("Congratulations on completing
+	the POKéDEX!
+	
+	I have something for you to
+	commend you for it...$")
+	goto(LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiplomaNoMessage)
+	end
+}
+
 raw `
-LilycoveCity_CoveLilyMotel_2F_MapScripts::
-	.byte 0
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_GameDesigner::
 	lock
@@ -18,17 +61,8 @@ LilycoveCity_CoveLilyMotel_2F_EventScript_ShowMeCompletedDex::
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_AllHoennMonsFanfare::
 	setflag FLAG_TEMP_2
-	playfanfare MUS_OBTAIN_ITEM
-	waitfanfare
+	call(Common_EventScript_PlayGymBadgeFanfare)
 	goto LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma
-	end
-
-LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma::
-	message LilycoveCity_CoveLilyMotel_2F_Text_FilledPokedexGiveYouThis
-	waitmessage
-	call Common_EventScript_PlayGymBadgeFanfare
-	special Special_ShowDiploma
-	release
 	end
 
 LilycoveCity_CoveLilyMotel_2F_EventScript_Programmer::
@@ -74,15 +108,6 @@ LilycoveCity_CoveLilyMotel_2F_Text_ShowMeCompletedDex:
 	.string "but don't give up.\p"
 	.string "If you do complete it, please come\n"
 	.string "show me.$"
-
-LilycoveCity_CoveLilyMotel_2F_Text_FilledPokedexGiveYouThis:
-	.string "Wow! That's awesome!\n"
-	.string "Yep, it's totally awesome!\p"
-	.string "This POKéDEX is completely filled!\n"
-	.string "You really must love POKéMON!\p"
-	.string "I'm so impressed!\p"
-	.string "Let me give you something in\n"
-	.string "recognition of your feat!$"
 
 LilycoveCity_CoveLilyMotel_2F_Text_ImTheProgrammer:
 	.string "Me? You're talking to me?\n"

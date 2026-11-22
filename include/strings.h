@@ -899,6 +899,7 @@ extern const u8 gText_Phoebe[];
 extern const u8 gText_Glacia[];
 
 extern const u8 gText_MoveRelearnerPkmnLearnedMove[];
+extern const u8 gText_NoMovesToRelearn[];
 extern const u8 gText_MoveRelearnerPkmnTryingToLearnMove[];
 extern const u8 gText_MoveRelearnerWhichMoveToForget[];
 extern const u8 gText_MoveRelearnerStopTryingToTeachMove[];
@@ -2155,6 +2156,7 @@ extern const u8 gText_ThatIsntAnEgg[];
 extern const u8 gText_OtherTrainersPkmnCantBeTraded[];
 extern const u8 gText_OtherTrainerCantAcceptPkmn[];
 extern const u8 gText_CantTradeWithTrainer[];
+extern const u8 gText_MoveRelearner[];
 
 // trade
 extern const u8 gText_XWillBeSentToY[];

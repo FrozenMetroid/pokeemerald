@@ -93,5 +93,11 @@ All credits for the decompilation efforts lie with the contributors of pokeemera
 
 ### QoL
 - TMs are infinite
+- Pokémon can relearn moves from the party menu without a Heart Scale.
 - Overworld poison has been removed
 - Pokémon with the Ability Harvest will grant one additional Berry when they are the first Pokémon in the party when collecting Berries (CalcBerryYieldInternal)
+- Decreased the cost of coins from the Game Corner to reduce the grinding
+
+### Items
+- A clerk on the second floor of the department store now sells evolution stones and the Linking Cord (used to evolve Haunter, Kadabra, Machoke, and Graveler)
+- A new Water Stone has been added to Route 114 near the Persim Berries (requires Surf)

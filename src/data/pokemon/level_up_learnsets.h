@@ -6284,6 +6284,7 @@ static const u16 sSealeoLevelUpLearnset[] = {
 };
 
 static const u16 sWalreinLevelUpLearnset[] = {
+    LEVEL_UP_MOVE_NEW(MOVE_HYPER_FANG, 1),
     LEVEL_UP_MOVE_NEW(MOVE_SWAGGER, 1),
     LEVEL_UP_MOVE_NEW(MOVE_DEFENSE_CURL, 1),
     LEVEL_UP_MOVE_NEW(MOVE_POWDER_SNOW, 1),

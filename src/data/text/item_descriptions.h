@@ -1549,3 +1549,13 @@ static const u8 sOldSeaMapDesc[] = _(
     "A faded sea chart\n"
     "that shows the way\n"
     "to a certain island.");
+
+static const u8 sShinyCharmDesc[] = _(
+    "A charm that\n"
+    "seems to attract\n"
+    "shiny POKéMON.");
+
+static const u8 sLinkingCordDesc[] = _(
+    "A hold item that\n"
+    "is loved by\n"
+    "certain POKéMON.");

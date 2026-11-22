@@ -109,7 +109,7 @@ enum {
     ITEM_THUNDER_STONE,
     ITEM_WATER_STONE,
     ITEM_LEAF_STONE,
-    ITEM_063,
+    ITEM_LINKING_CORD,
     ITEM_064,
     ITEM_065,
     ITEM_066,
@@ -408,6 +408,7 @@ enum {
     // Emerald
     ITEM_MAGMA_EMBLEM,
     ITEM_OLD_SEA_MAP,
+    ITEM_SHINY_CHARM,
 
     ITEMS_COUNT
 };

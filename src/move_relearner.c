@@ -92,7 +92,7 @@
  * DoMoveRelearnerMain: MENU_STATE_WAIT_FOR_A_BUTTON
  * DoMoveRelearnerMain: MENU_STATE_FADE_AND_RETURN
  * DoMoveRelearnerMain: MENU_STATE_RETURN_TO_FIELD
- *   - Clean up and go to CB2_ReturnToField.
+ *   - Clean up and return to the caller.
  *
  * DoMoveRelearnerMain: MENU_STATE_PRINT_GIVE_UP_PROMPT
  * DoMoveRelearnerMain: MENU_STATE_GIVE_UP_CONFIRM
@@ -180,6 +180,8 @@ static EWRAM_DATA struct {
     u16 listRow;
     bool8 showContestInfo;
 } sMoveRelearnerMenuState = {0};
+
+static EWRAM_DATA MainCallback sMoveRelearnerReturnCallback = NULL;
 
 static const u16 sUI_Pal[] = INCGFX_U16("graphics/interface/ui_learn_move.png", ".gbapal");
 
@@ -372,10 +374,18 @@ static void VBlankCB_MoveRelearner(void)
 // Script arguments: The Pokémon to teach is in VAR_0x8004
 void TeachMoveRelearnerMove(void)
 {
+    sMoveRelearnerReturnCallback = CB2_ReturnToField;
     LockPlayerFieldControls();
     CreateTask(Task_WaitForFadeOut, 10);
     // Fade to black
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
+}
+
+void ShowMoveRelearner(u8 partyMon, MainCallback returnCallback)
+{
+    gSpecialVar_0x8004 = partyMon;
+    sMoveRelearnerReturnCallback = returnCallback;
+    SetMainCallback2(CB2_InitLearnMove);
 }
 
 static void Task_WaitForFadeOut(u8 taskId)
@@ -679,7 +689,7 @@ static void DoMoveRelearnerMain(void)
         if (!gPaletteFade.active)
         {
             FreeMoveRelearnerResources();
-            SetMainCallback2(CB2_ReturnToField);
+            SetMainCallback2(sMoveRelearnerReturnCallback);
         }
         break;
     case MENU_STATE_FADE_FROM_SUMMARY_SCREEN:

@@ -2208,6 +2208,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     u32 personality;
     u32 value;
     u16 checksum;
+    s32 i;
 
     ZeroBoxMonData(boxMon);
 
@@ -2239,6 +2240,18 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
               | (gSaveBlock2Ptr->playerTrainerId[1] << 8)
               | (gSaveBlock2Ptr->playerTrainerId[2] << 16)
               | (gSaveBlock2Ptr->playerTrainerId[3] << 24);
+
+        // if you have the shiny charm and the mon is not already shiny, add two rolls
+        if (CheckBagHasItem(ITEM_SHINY_CHARM, 1) && (!(GET_SHINY_VALUE(value, personality) < SHINY_ODDS))) {
+            for (i = 0; i < 2; i++) { // two rolls: 0 and 1
+                if (Random() < SHINY_ODDS)
+                {
+                    personality = GenerateShinyPersonalityWithTrainerID(value);
+                    SetBoxMonData(boxMon, MON_DATA_PERSONALITY, &personality);
+                    break;
+                }
+            }
+        }
     }
 
     SetBoxMonData(boxMon, MON_DATA_OT_ID, &value);
@@ -3275,12 +3288,12 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     // Weather stat modification
     if (WEATHER_HAS_EFFECT) {
         if (gBattleWeather & B_WEATHER_SANDSTORM) {
-            if (defender->types[0] == TYPE_ROCK || defender->types[1] == TYPE_ROCK) {
+            if (IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_ROCK)) {
                 spDefense = (15 * spDefense) / 10;
             }
         }
         if (gBattleWeather & B_WEATHER_HAIL) {
-            if (defender->types[0] == TYPE_ICE || defender->types[1] == TYPE_ICE) {
+            if (IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_ICE)) {
                 defense = (15 * defense) / 10;
             }
         }
@@ -3434,53 +3447,74 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
             damage = (15 * damage) / 10;
         }
     
-    // other abilities
-    if (attacker->ability == ABILITY_RIVALRY)
-    {
-        u8 attackerGender = GetGenderFromSpeciesAndPersonality(attacker->species, attacker->personality);
-        u8 defenderGender = GetGenderFromSpeciesAndPersonality(defender->species, defender->personality);
+    // new to senate emerald
+    // other attacking abilities that modify damage
+    switch (attacker->ability) {
+        case ABILITY_RIVALRY:
+            {
+                u8 attackerGender = GetGenderFromSpeciesAndPersonality(attacker->species, attacker->personality);
+                u8 defenderGender = GetGenderFromSpeciesAndPersonality(defender->species, defender->personality);
 
-        if (attackerGender == defenderGender) {
-            damage = (15 * damage) / 10;
-        } else {
-            damage = (3 * damage) / 4;
-        }
-    } else if (attacker->ability == ABILITY_TECHNICIAN) {
-        if (gBattleMoves[gCurrentMove].power <= 60
-            && gCurrentMove != MOVE_STRUGGLE) {
-            damage = (15 * damage) / 10;
-        }
-    } else if (defender->ability == ABILITY_FILTER || defender->ability == ABILITY_SOLID_ROCK) {
-        if (gMoveResultFlags & MOVE_RESULT_SUPER_EFFECTIVE) {
-            damage = (3 * damage) / 4;
-        }
-    } else if (defender->ability == ABILITY_HEATPROOF) {
-        if (type == TYPE_FIRE)
-            damage /= 2;
-    } else if (attacker->ability == ABILITY_ARTILLERY) {
-        for (i = 0; i < ARRAY_COUNT(sMovesBoostedByArtillery); i++) {
-            if (gCurrentMove == sMovesBoostedByArtillery[i]) {
-                damage = (13 * damage) / 10;
-                break;
+                if (attackerGender == defenderGender) {
+                    damage = (15 * damage) / 10;
+                } else {
+                    damage = (3 * damage) / 4;
+                }
             }
-        }
-    } else if (attacker->ability == ABILITY_STRONG_JAW) {
-        for (i = 0; i < ARRAY_COUNT(sMovesBoostedByStrongJaw); i++) {
-            if (gCurrentMove == sMovesBoostedByStrongJaw[i]) {
-                damage = (13 * damage) / 10;
-                break;
+            break;
+        case ABILITY_TECHNICIAN:
+            if (gBattleMoves[gCurrentMove].power <= 60
+                && gCurrentMove != MOVE_STRUGGLE) {
+                damage = (15 * damage) / 10;
             }
-        }
-    } else if (attacker->ability == ABILITY_IRON_FIST) {
-        for (i = 0; i < ARRAY_COUNT(sMovesBoostedByIronFist); i++) {
-            if (gCurrentMove == sMovesBoostedByIronFist[i]) {
-                damage = (13 * damage) / 10;
-                break;
+            break;
+        case ABILITY_ARTILLERY:
+            for (i = 0; i < ARRAY_COUNT(sMovesBoostedByArtillery); i++) {
+                if (gCurrentMove == sMovesBoostedByArtillery[i]) {
+                    damage = (13 * damage) / 10;
+                    break;
+                }
             }
-        }
-    } else if (attacker->ability == ABILITY_RECKLESS) {
-        if (gBattleMoves[gCurrentMove].effect == EFFECT_RECOIL || gBattleMoves[gCurrentMove].effect == EFFECT_RECOIL_IF_MISS)
-            damage = (12 * damage) / 10;
+            break;
+        case ABILITY_STRONG_JAW:
+            for (i = 0; i < ARRAY_COUNT(sMovesBoostedByStrongJaw); i++) {
+                if (gCurrentMove == sMovesBoostedByStrongJaw[i]) {
+                    damage = (13 * damage) / 10;
+                    break;
+                }
+            }
+            break;
+        case ABILITY_IRON_FIST:
+            for (i = 0; i < ARRAY_COUNT(sMovesBoostedByIronFist); i++) {
+                if (gCurrentMove == sMovesBoostedByIronFist[i]) {
+                    damage = (13 * damage) / 10;
+                    break;
+                }
+            }
+            break;
+        case ABILITY_RECKLESS:
+            if (gBattleMoves[gCurrentMove].effect == EFFECT_RECOIL 
+                || gBattleMoves[gCurrentMove].effect == EFFECT_RECOIL_IF_MISS 
+                || gBattleMoves[gCurrentMove].effect == EFFECT_DOUBLE_EDGE) {
+                damage = (12 * damage) / 10;
+            }
+            break;
+    }
+
+    // new to senate emerald
+    // other defending abilities that modify damage
+    switch (defender->ability) {
+        case ABILITY_FILTER:
+        case ABILITY_SOLID_ROCK:
+            if (gMoveResultFlags & MOVE_RESULT_SUPER_EFFECTIVE) {
+                damage = (3 * damage) / 4;
+            }
+            break;
+        case ABILITY_HEATPROOF:
+            if (type == TYPE_FIRE) {
+                damage /= 2;
+            }
+            break;
     }
 
     #ifdef DEBUG_BATTLE
@@ -6866,6 +6900,41 @@ bool8 IsShinyOtIdPersonality(u32 otId, u32 personality)
     return retVal;
 }
 
+u32 GenerateShinyPersonalityWithTrainerID(u32 monOTID)
+{
+    s32 i;
+    u16 rndLow, rndHigh;
+
+    // 1. Pre-compute the XOR of the two halves of the trainer ID. We only
+    // care about the most-significant 13 bits, so truncate the last 3.
+    monOTID = (((monOTID & 0xFFFF0000) >> 16) ^ (monOTID & 0xFFFF)) >> 3;
+
+    // 2. Randomize the least-significant 3-bits of each half of the
+    // generated personality.
+    rndLow = Random() & 0x7;
+    rndHigh = Random() & 0x7;
+
+    // 3. For each of the remaining 13 bits, pick some permutation of them
+    // across both halves to be set to 1 such that the XOR of their bits
+    // will XOR with the monOTID to 0.
+    for (i = 0; i < 13; i++) {
+        if (monOTID & FlagIndex(i)) {
+            // Trainer ID XORs to 1; set one of the two personality bits to 1
+            if (Random() & 1) {
+                rndLow |= FlagIndex(i + 3);
+            } else {
+                rndHigh |= FlagIndex(i + 3);
+            }
+        } else if (Random() & 1) {
+            // Trainer ID XORs to 0; set both of the two bits to either 0 or 1
+            rndLow |= FlagIndex(i + 3);
+            rndHigh |= FlagIndex(i + 3);
+        }
+    }
+
+    return rndLow | (rndHigh << 16);
+}
+
 const u8 *GetTrainerPartnerName(void)
 {
     if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
@@ -7302,4 +7371,23 @@ u8 *MonSpritesGfxManager_GetSpritePtr(u8 managerId, u8 spriteNum)
 
         return gfx->spritePointers[spriteNum];
     }
+}
+
+void GenerateTrainerShinyIDWithPersonality(u32 *personalityValue, u32 *id)
+{
+    do {
+        *id = (Random() | (Random() << 16));
+    } while (GET_SHINY_VALUE(*id, *personalityValue) >= SHINY_ODDS);
+}
+
+u32 FlagIndex(int num)
+{
+    int i;
+    u32 flag = 1;
+
+    for (i = 0; i < num; i++) {
+        flag <<= 1;
+    }
+
+    return flag;
 }

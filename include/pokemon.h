@@ -551,4 +551,9 @@ void EncryptBoxMon(struct BoxPokemon *boxMon);
 void DecryptBoxMon(struct BoxPokemon *boxMon);
 u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon);
 
+void GenerateTrainerShinyIDWithPersonality(u32 *personalityValue, u32 *id);
+u32 GenerateShinyPersonalityWithTrainerID(u32 monOTID);
+
+u32 FlagIndex(int num);
+
 #endif // GUARD_POKEMON_H

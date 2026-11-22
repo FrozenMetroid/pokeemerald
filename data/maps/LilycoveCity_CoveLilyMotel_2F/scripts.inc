@@ -1,270 +1,294 @@
-# 1 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-
-# 2 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 LilycoveCity_CoveLilyMotel_2F_MapScripts::
-# 3 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	.byte 0
-# 4 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 
-# 5 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-LilycoveCity_CoveLilyMotel_2F_EventScript_GameDesigner::
-# 6 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	lock
-# 7 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	faceplayer
-# 8 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	call_if_unset FLAG_TEMP_2, LilycoveCity_CoveLilyMotel_2F_EventScript_ShowMeCompletedDex
-# 9 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	call_if_set FLAG_TEMP_2, LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma
-# 10 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	specialvar VAR_RESULT, HasAllHoennMons
-# 11 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, LilycoveCity_CoveLilyMotel_2F_EventScript_AllHoennMonsFanfare
-# 12 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	release
-# 13 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	end
-# 14 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 
-# 15 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-LilycoveCity_CoveLilyMotel_2F_EventScript_ShowMeCompletedDex::
-# 16 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_ShowMeCompletedDex, MSGBOX_DEFAULT
-# 17 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	return
-# 18 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-
-# 19 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-LilycoveCity_CoveLilyMotel_2F_EventScript_AllHoennMonsFanfare::
-# 20 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	setflag FLAG_TEMP_2
-# 21 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	playfanfare MUS_OBTAIN_ITEM
-# 22 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitfanfare
-# 23 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	goto LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma
-# 24 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	end
-# 25 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-
-# 26 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma::
-# 27 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	message LilycoveCity_CoveLilyMotel_2F_Text_FilledPokedexGiveYouThis
-# 28 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	waitmessage
-# 29 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	call Common_EventScript_PlayGymBadgeFanfare
-# 30 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	special Special_ShowDiploma
+# 4 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	goto_if_set FLAG_GOT_SHINY_CHARM, LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiplomaWithMessage
+# 5 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	msgbox LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma_Text_0
+# 14 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	giveitem ITEM_SHINY_CHARM
+# 15 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	setflag FLAG_GOT_SHINY_CHARM
+# 16 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	msgbox LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma_Text_1
+# 26 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	goto LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiplomaNoMessage
+	end
+
+
+LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiplomaNoMessage::
 # 31 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	release
+	special Special_ShowDiploma
 # 32 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	release
 	end
-# 33 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 
-# 34 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-LilycoveCity_CoveLilyMotel_2F_EventScript_Programmer::
-# 35 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_ImTheProgrammer, MSGBOX_NPC
-# 36 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	end
+
+LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiplomaWithMessage::
 # 37 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-
-# 38 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-LilycoveCity_CoveLilyMotel_2F_EventScript_GraphicArtist::
-# 39 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_ImTheGraphicArtist, MSGBOX_NPC
-# 40 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	end
-# 41 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-
+	msgbox LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiplomaWithMessage_Text_0
 # 42 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-LilycoveCity_CoveLilyMotel_2F_EventScript_FatMan::
-# 43 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_GirlsAreCute, MSGBOX_NPC
-# 44 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	goto LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiplomaNoMessage
 	end
-# 45 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+
 
 # 46 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-LilycoveCity_CoveLilyMotel_2F_EventScript_Woman::
+
 # 47 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SeaBreezeTicklesHeart, MSGBOX_NPC
+
 # 48 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	end
+LilycoveCity_CoveLilyMotel_2F_EventScript_GameDesigner::
 # 49 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-
-# 50 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-LilycoveCity_CoveLilyMotel_2F_EventScript_GameBoyKid::
-# 51 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_NeverLeaveWithoutGameBoy, MSGBOX_NPC
-# 52 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	end
-# 53 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-
-# 54 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-LilycoveCity_CoveLilyMotel_2F_EventScript_Scott::
-# 55 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	lock
-# 56 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+# 50 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	faceplayer
+# 51 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	call_if_unset FLAG_TEMP_2, LilycoveCity_CoveLilyMotel_2F_EventScript_ShowMeCompletedDex
+# 52 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	call_if_set FLAG_TEMP_2, LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma
+# 53 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	specialvar VAR_RESULT, HasAllHoennMons
+# 54 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	goto_if_eq VAR_RESULT, TRUE, LilycoveCity_CoveLilyMotel_2F_EventScript_AllHoennMonsFanfare
+# 55 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	release
+# 56 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	end
 # 57 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	goto_if_set FLAG_MET_SCOTT_IN_LILYCOVE, LilycoveCity_CoveLilyMotel_2F_EventScript_MetScott
+
 # 58 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SnoozingPreferBattles, MSGBOX_DEFAULT
+LilycoveCity_CoveLilyMotel_2F_EventScript_ShowMeCompletedDex::
 # 59 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	addvar VAR_SCOTT_STATE, 1
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_ShowMeCompletedDex, MSGBOX_DEFAULT
 # 60 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	setflag FLAG_MET_SCOTT_IN_LILYCOVE
+	return
 # 61 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	release
+
 # 62 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	end
+LilycoveCity_CoveLilyMotel_2F_EventScript_AllHoennMonsFanfare::
 # 63 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-
+	setflag FLAG_TEMP_2
 # 64 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-LilycoveCity_CoveLilyMotel_2F_EventScript_MetScott::
+	call(Common_EventScript_PlayGymBadgeFanfare)
 # 65 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	msgbox LilycoveCity_CoveLilyMotel_2F_Text_ContestsDoTakeStrategy, MSGBOX_DEFAULT
+	goto LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma
 # 66 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	release
-# 67 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	end
+# 67 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+
 # 68 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-
+LilycoveCity_CoveLilyMotel_2F_EventScript_Programmer::
 # 69 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-LilycoveCity_CoveLilyMotel_2F_Text_ShowMeCompletedDex:
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_ImTheProgrammer, MSGBOX_NPC
 # 70 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "I'm the GAME DESIGNER.\p"
+	end
 # 71 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "Oh, is that right?\n"
+
 # 72 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "You're working on a POKéDEX?\p"
+LilycoveCity_CoveLilyMotel_2F_EventScript_GraphicArtist::
 # 73 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "It's tough trying to complete it,\n"
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_ImTheGraphicArtist, MSGBOX_NPC
 # 74 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "but don't give up.\p"
+	end
 # 75 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "If you do complete it, please come\n"
+
 # 76 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "show me.$"
+LilycoveCity_CoveLilyMotel_2F_EventScript_FatMan::
 # 77 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_GirlsAreCute, MSGBOX_NPC
 # 78 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-LilycoveCity_CoveLilyMotel_2F_Text_FilledPokedexGiveYouThis:
+	end
 # 79 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "Wow! That's awesome!\n"
+
 # 80 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "Yep, it's totally awesome!\p"
+LilycoveCity_CoveLilyMotel_2F_EventScript_Woman::
 # 81 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "This POKéDEX is completely filled!\n"
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SeaBreezeTicklesHeart, MSGBOX_NPC
 # 82 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "You really must love POKéMON!\p"
+	end
 # 83 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "I'm so impressed!\p"
+
 # 84 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "Let me give you something in\n"
+LilycoveCity_CoveLilyMotel_2F_EventScript_GameBoyKid::
 # 85 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "recognition of your feat!$"
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_NeverLeaveWithoutGameBoy, MSGBOX_NPC
 # 86 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-
+	end
 # 87 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-LilycoveCity_CoveLilyMotel_2F_Text_ImTheProgrammer:
+
 # 88 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "Me? You're talking to me?\n"
+LilycoveCity_CoveLilyMotel_2F_EventScript_Scott::
 # 89 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "I'm the PROGRAMMER.\p"
+	lock
 # 90 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "I wonder what the SLOTS are\n"
+	faceplayer
 # 91 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "like here.$"
+	goto_if_set FLAG_MET_SCOTT_IN_LILYCOVE, LilycoveCity_CoveLilyMotel_2F_EventScript_MetScott
 # 92 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_SnoozingPreferBattles, MSGBOX_DEFAULT
 # 93 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-LilycoveCity_CoveLilyMotel_2F_Text_ImTheGraphicArtist:
+	addvar VAR_SCOTT_STATE, 1
 # 94 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "I'm the GRAPHIC ARTIST! Aren't the\n"
+	setflag FLAG_MET_SCOTT_IN_LILYCOVE
 # 95 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "POKéMON of HOENN interesting?$"
+	release
 # 96 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-
+	end
 # 97 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-LilycoveCity_CoveLilyMotel_2F_Text_GirlsAreCute:
+
 # 98 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "The girl TUBERS, they're cute, hey?\n"
+LilycoveCity_CoveLilyMotel_2F_EventScript_MetScott::
 # 99 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "To battle against a cute TUBER…\p"
+	msgbox LilycoveCity_CoveLilyMotel_2F_Text_ContestsDoTakeStrategy, MSGBOX_DEFAULT
 # 100 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "Whoop, it's so awesome!\p"
+	release
 # 101 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "And the TWINS! Aren't they cute?\n"
+	end
 # 102 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "A 2-on-2 battle with TWINS…\p"
+
 # 103 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "Whoop, it's unbearably fun!$"
+LilycoveCity_CoveLilyMotel_2F_Text_ShowMeCompletedDex:
 # 104 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-
+	.string "I'm the GAME DESIGNER.\p"
 # 105 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-LilycoveCity_CoveLilyMotel_2F_Text_SeaBreezeTicklesHeart:
+	.string "Oh, is that right?\n"
 # 106 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "The sea breeze tickles my heart.\n"
+	.string "You're working on a POKéDEX?\p"
 # 107 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "It feels wonderful here!$"
+	.string "It's tough trying to complete it,\n"
 # 108 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-
+	.string "but don't give up.\p"
 # 109 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-LilycoveCity_CoveLilyMotel_2F_Text_NeverLeaveWithoutGameBoy:
+	.string "If you do complete it, please come\n"
 # 110 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "You never know when and where\n"
+	.string "show me.$"
 # 111 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "people will challenge you.\p"
+
 # 112 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "That's why I never leave home without\n"
+LilycoveCity_CoveLilyMotel_2F_Text_ImTheProgrammer:
 # 113 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "my GAME BOY ADVANCE.$"
+	.string "Me? You're talking to me?\n"
 # 114 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-
+	.string "I'm the PROGRAMMER.\p"
 # 115 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-LilycoveCity_CoveLilyMotel_2F_Text_SnoozingPreferBattles:
+	.string "I wonder what the SLOTS are\n"
 # 116 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "SCOTT: … … … … …\n"
+	.string "like here.$"
 # 117 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "… … … … … Zzz…\p"
-# 118 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "… … … … … Huh?!\n"
-# 119 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "Oh, sorry, sorry! I was snoozing!\p"
-# 120 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "I came to check out this POKéMON\n"
-# 121 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "CONTEST thing.\p"
-# 122 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "I have to admit, it does look quite\n"
-# 123 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "entertaining, but…\p"
-# 124 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "Consider me a purist--I prefer\n"
-# 125 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "battles and tough TRAINERS.\p"
-# 126 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "But that's just me.\p"
-# 127 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "{PLAYER}{KUN}, I hope you'll enjoy everything\n"
-# 128 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "like the GYMS, CONTESTS, BATTLE TENT,\l"
-# 129 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "the whole works!$"
-# 130 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 
+# 118 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+LilycoveCity_CoveLilyMotel_2F_Text_ImTheGraphicArtist:
+# 119 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "I'm the GRAPHIC ARTIST! Aren't the\n"
+# 120 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "POKéMON of HOENN interesting?$"
+# 121 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+
+# 122 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+LilycoveCity_CoveLilyMotel_2F_Text_GirlsAreCute:
+# 123 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "The girl TUBERS, they're cute, hey?\n"
+# 124 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "To battle against a cute TUBER…\p"
+# 125 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "Whoop, it's so awesome!\p"
+# 126 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "And the TWINS! Aren't they cute?\n"
+# 127 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "A 2-on-2 battle with TWINS…\p"
+# 128 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "Whoop, it's unbearably fun!$"
+# 129 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+
+# 130 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+LilycoveCity_CoveLilyMotel_2F_Text_SeaBreezeTicklesHeart:
 # 131 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-LilycoveCity_CoveLilyMotel_2F_Text_ContestsDoTakeStrategy:
+	.string "The sea breeze tickles my heart.\n"
 # 132 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "SCOTT: I think it does take strategy\n"
+	.string "It feels wonderful here!$"
 # 133 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "to win a CONTEST.\p"
+
 # 134 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
-	.string "Devising CONTEST strategies is one way\n"
+LilycoveCity_CoveLilyMotel_2F_Text_NeverLeaveWithoutGameBoy:
 # 135 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "You never know when and where\n"
+# 136 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "people will challenge you.\p"
+# 137 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "That's why I never leave home without\n"
+# 138 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "my GAME BOY ADVANCE.$"
+# 139 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+
+# 140 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+LilycoveCity_CoveLilyMotel_2F_Text_SnoozingPreferBattles:
+# 141 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "SCOTT: … … … … …\n"
+# 142 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "… … … … … Zzz…\p"
+# 143 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "… … … … … Huh?!\n"
+# 144 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "Oh, sorry, sorry! I was snoozing!\p"
+# 145 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "I came to check out this POKéMON\n"
+# 146 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "CONTEST thing.\p"
+# 147 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "I have to admit, it does look quite\n"
+# 148 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "entertaining, but…\p"
+# 149 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "Consider me a purist--I prefer\n"
+# 150 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "battles and tough TRAINERS.\p"
+# 151 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "But that's just me.\p"
+# 152 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "{PLAYER}{KUN}, I hope you'll enjoy everything\n"
+# 153 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "like the GYMS, CONTESTS, BATTLE TENT,\l"
+# 154 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "the whole works!$"
+# 155 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+
+# 156 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+LilycoveCity_CoveLilyMotel_2F_Text_ContestsDoTakeStrategy:
+# 157 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "SCOTT: I think it does take strategy\n"
+# 158 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "to win a CONTEST.\p"
+# 159 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "Devising CONTEST strategies is one way\n"
+# 160 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
 	.string "of becoming a better TRAINER, I'd say.$"
+
+LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma_Text_0:
+# 5 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "Wow! That's awesome!\n"
+	.string "Yep, it's totally awesome!\p"
+	.string "This POKéDEX is completely filled!\n"
+	.string "You really must love POKéMON!\p"
+	.string "I'm so impressed!\n"
+	.string "Let me give you something in\l"
+	.string "recognition of your feat!$"
+
+LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiploma_Text_1:
+# 16 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "That charm is very special.\n"
+	.string "It will attract rare, shiny\l"
+	.string "POKéMON.\p"
+	.string "If you encounter one, be sure to\n"
+	.string "capture it! You might never see\l"
+	.string "one like that again!\p"
+	.string "By the way, I have one more thing to\n"
+	.string "show you...$"
+
+LilycoveCity_CoveLilyMotel_2F_EventScript_ShowDiplomaWithMessage_Text_0:
+# 37 "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.pory"
+	.string "Congratulations on completing\n"
+	.string "the POKéDEX!\p"
+	.string "I have something for you to\n"
+	.string "commend you for it...$"

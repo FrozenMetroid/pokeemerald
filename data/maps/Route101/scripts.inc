@@ -359,81 +359,85 @@ Route101_EventScript_Boy::
 
 Route101_EventScript_RouteSign::
 # 199 "data/maps/Route101/scripts.pory"
-	msgbox Route101_EventScript_RouteSign_Text_0
+	fillpokedex
+# 200 "data/maps/Route101/scripts.pory"
+	warp MAP_LILYCOVE_CITY_COVE_LILY_MOTEL_2F, 6, 4
 # 201 "data/maps/Route101/scripts.pory"
+	msgbox Route101_EventScript_RouteSign_Text_0
+# 203 "data/maps/Route101/scripts.pory"
 	closemessage
 	end
 
 
 Route101_EventScript_BirchsBag::
-# 206 "data/maps/Route101/scripts.pory"
-	lock
-# 207 "data/maps/Route101/scripts.pory"
-	faceplayer
 # 208 "data/maps/Route101/scripts.pory"
-	setflag FLAG_SYS_POKEMON_GET
+	lock
 # 209 "data/maps/Route101/scripts.pory"
-	setflag FLAG_RESCUED_BIRCH
+	faceplayer
 # 210 "data/maps/Route101/scripts.pory"
-	fadescreen FADE_TO_BLACK
+	setflag FLAG_SYS_POKEMON_GET
 # 211 "data/maps/Route101/scripts.pory"
-	removeobject LOCALID_ROUTE101_ZIGZAGOON
+	setflag FLAG_RESCUED_BIRCH
 # 212 "data/maps/Route101/scripts.pory"
-	setobjectxy LOCALID_PLAYER, 6, 13
+	fadescreen FADE_TO_BLACK
 # 213 "data/maps/Route101/scripts.pory"
-	applywaitmovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+	removeobject LOCALID_ROUTE101_ZIGZAGOON
 # 214 "data/maps/Route101/scripts.pory"
-	special ChooseStarter
+	setobjectxy LOCALID_PLAYER, 6, 13
 # 215 "data/maps/Route101/scripts.pory"
-	applywaitmovement LOCALID_ROUTE101_BIRCH, Route101_Movement_BirchApproachPlayer
+	applywaitmovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 # 216 "data/maps/Route101/scripts.pory"
+	special ChooseStarter
+# 217 "data/maps/Route101/scripts.pory"
+	applywaitmovement LOCALID_ROUTE101_BIRCH, Route101_Movement_BirchApproachPlayer
+# 218 "data/maps/Route101/scripts.pory"
 	msgbox Route101_EventScript_BirchsBag_Text_0
-# 228 "data/maps/Route101/scripts.pory"
-	special HealPlayerParty
-# 229 "data/maps/Route101/scripts.pory"
-	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
 # 230 "data/maps/Route101/scripts.pory"
-	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
+	special HealPlayerParty
 # 231 "data/maps/Route101/scripts.pory"
-	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
+	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
 # 232 "data/maps/Route101/scripts.pory"
-	setvar VAR_BIRCH_LAB_STATE, 2
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
 # 233 "data/maps/Route101/scripts.pory"
-	setvar VAR_ROUTE101_STATE, 3
+	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
 # 234 "data/maps/Route101/scripts.pory"
-	clearflag FLAG_HIDE_MAP_NAME_POPUP
+	setvar VAR_BIRCH_LAB_STATE, 2
 # 235 "data/maps/Route101/scripts.pory"
-	checkplayergender
+	setvar VAR_ROUTE101_STATE, 3
 # 236 "data/maps/Route101/scripts.pory"
-	call_if_eq VAR_RESULT, MALE, Route101_EventScript_HideMayInBedroom
+	clearflag FLAG_HIDE_MAP_NAME_POPUP
 # 237 "data/maps/Route101/scripts.pory"
-	call_if_eq VAR_RESULT, FEMALE, Route101_EventScript_HideBrendanInBedroom
+	checkplayergender
 # 238 "data/maps/Route101/scripts.pory"
-	warp MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB, 6, 5
+	call_if_eq VAR_RESULT, MALE, Route101_EventScript_HideMayInBedroom
 # 239 "data/maps/Route101/scripts.pory"
-	waitstate
+	call_if_eq VAR_RESULT, FEMALE, Route101_EventScript_HideBrendanInBedroom
 # 240 "data/maps/Route101/scripts.pory"
+	warp MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB, 6, 5
+# 241 "data/maps/Route101/scripts.pory"
+	waitstate
+# 242 "data/maps/Route101/scripts.pory"
 	release
 	end
 
 
 Route101_EventScript_HideMayInBedroom::
-# 245 "data/maps/Route101/scripts.pory"
+# 247 "data/maps/Route101/scripts.pory"
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
 	return
 
 
 Route101_EventScript_HideBrendanInBedroom::
-# 250 "data/maps/Route101/scripts.pory"
+# 252 "data/maps/Route101/scripts.pory"
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
 	return
 
 
-# 254 "data/maps/Route101/scripts.pory"
-Route101_Movement_BirchApproachPlayer:
-# 255 "data/maps/Route101/scripts.pory"
-	walk_right
 # 256 "data/maps/Route101/scripts.pory"
+Route101_Movement_BirchApproachPlayer:
+# 257 "data/maps/Route101/scripts.pory"
+	walk_right
+# 258 "data/maps/Route101/scripts.pory"
 	step_end
 
 Route101_EventScript_StartBirchRescue_Text_0:
@@ -467,12 +471,12 @@ Route101_EventScript_Boy_Text_0:
 	.string "to go into the tall grass and search.$"
 
 Route101_EventScript_RouteSign_Text_0:
-# 199 "data/maps/Route101/scripts.pory"
+# 201 "data/maps/Route101/scripts.pory"
 	.string "ROUTE 101\n"
 	.string "{UP_ARROW} OLDALE TOWN$"
 
 Route101_EventScript_BirchsBag_Text_0:
-# 216 "data/maps/Route101/scripts.pory"
+# 218 "data/maps/Route101/scripts.pory"
 	.string "PROF. BIRCH: Whew…\n"
 	.string "I was in the tall grass studying wild\l"
 	.string "POKéMON when I was jumped.\p"

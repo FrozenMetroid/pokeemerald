@@ -102,6 +102,10 @@ Route114_EventScript_ItemEnergyPowder::
 	finditem ITEM_ENERGY_POWDER
 	end
 
+Route114_EventScript_ItemWaterStone::
+	finditem ITEM_WATER_STONE
+	end
+
 Route115_EventScript_ItemSuperPotion::
 	finditem ITEM_SUPER_POTION
 	end

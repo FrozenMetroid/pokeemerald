@@ -23,9 +23,9 @@ MauvilleCity_GameCorner_MapScripts::
 # 12 "data/maps/MauvilleCity_GameCorner/scripts.pory"
 
 # 13 "data/maps/MauvilleCity_GameCorner/scripts.pory"
-	.set COINS_PRICE_50,  1000
+	.set COINS_PRICE_50,  500
 # 14 "data/maps/MauvilleCity_GameCorner/scripts.pory"
-	.set COINS_PRICE_500, 10000
+	.set COINS_PRICE_500, 5000
 # 15 "data/maps/MauvilleCity_GameCorner/scripts.pory"
 
 # 16 "data/maps/MauvilleCity_GameCorner/scripts.pory"

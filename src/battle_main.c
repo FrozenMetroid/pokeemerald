@@ -2135,9 +2135,8 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 if (partyData[i].shinyLock)
                 {
                     DecryptBoxMon(&party[i].box);
-                    do {
-                        id = (Random() | (Random() << 16));
-                    } while (GET_SHINY_VALUE(id, personalityValue) >= SHINY_ODDS);
+
+                    GenerateTrainerShinyIDWithPersonality(&personalityValue, &id);
                     SetMonData(&party[i], MON_DATA_OT_ID, &id);
                     
                     checksum = CalculateBoxMonChecksum(&party[i].box);
