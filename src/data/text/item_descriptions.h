@@ -1569,3 +1569,8 @@ static const u8 sGoldCapDesc[] = _(
     "A rare golden cap\n"
     "that is highly\n"
     "valued by TRAINERS.");
+
+static const u8 sAbilityPodDesc[] = _(
+    "A pod that\n"
+    "allows a POKéMON to\n"
+    "change its Ability.");

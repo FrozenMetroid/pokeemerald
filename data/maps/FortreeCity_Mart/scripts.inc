@@ -51,60 +51,62 @@ FortreeCity_Mart_Pokemart:
 # 26 "data/maps/FortreeCity_Mart/scripts.pory"
 	.2byte ITEM_WOOD_MAIL
 # 27 "data/maps/FortreeCity_Mart/scripts.pory"
-	pokemartlistend
+	.2byte ITEM_ABILITY_POD
 # 28 "data/maps/FortreeCity_Mart/scripts.pory"
-
+	pokemartlistend
 # 29 "data/maps/FortreeCity_Mart/scripts.pory"
-FortreeCity_Mart_EventScript_Woman::
+
 # 30 "data/maps/FortreeCity_Mart/scripts.pory"
-	msgbox FortreeCity_Mart_Text_SuperRepelBetter, MSGBOX_NPC
+FortreeCity_Mart_EventScript_Woman::
 # 31 "data/maps/FortreeCity_Mart/scripts.pory"
-	end
+	msgbox FortreeCity_Mart_Text_SuperRepelBetter, MSGBOX_NPC
 # 32 "data/maps/FortreeCity_Mart/scripts.pory"
-
+	end
 # 33 "data/maps/FortreeCity_Mart/scripts.pory"
-FortreeCity_Mart_EventScript_Girl::
+
 # 34 "data/maps/FortreeCity_Mart/scripts.pory"
-	msgbox FortreeCity_Mart_Text_StockUpOnItems, MSGBOX_NPC
+FortreeCity_Mart_EventScript_Girl::
 # 35 "data/maps/FortreeCity_Mart/scripts.pory"
-	end
+	msgbox FortreeCity_Mart_Text_StockUpOnItems, MSGBOX_NPC
 # 36 "data/maps/FortreeCity_Mart/scripts.pory"
-
-# 37 "data/maps/FortreeCity_Mart/scripts.pory"
-FortreeCity_Mart_EventScript_Boy::
-# 38 "data/maps/FortreeCity_Mart/scripts.pory"
-	msgbox FortreeCity_Mart_Text_RareCandyMakesMonGrow, MSGBOX_NPC
-# 39 "data/maps/FortreeCity_Mart/scripts.pory"
 	end
+# 37 "data/maps/FortreeCity_Mart/scripts.pory"
+
+# 38 "data/maps/FortreeCity_Mart/scripts.pory"
+FortreeCity_Mart_EventScript_Boy::
+# 39 "data/maps/FortreeCity_Mart/scripts.pory"
+	msgbox FortreeCity_Mart_Text_RareCandyMakesMonGrow, MSGBOX_NPC
 # 40 "data/maps/FortreeCity_Mart/scripts.pory"
-
+	end
 # 41 "data/maps/FortreeCity_Mart/scripts.pory"
-FortreeCity_Mart_Text_SuperRepelBetter:
+
 # 42 "data/maps/FortreeCity_Mart/scripts.pory"
-	.string "SUPER REPEL lasts a long time,\n"
+FortreeCity_Mart_Text_SuperRepelBetter:
 # 43 "data/maps/FortreeCity_Mart/scripts.pory"
-	.string "and it gets the job done.\p"
+	.string "SUPER REPEL lasts a long time,\n"
 # 44 "data/maps/FortreeCity_Mart/scripts.pory"
-	.string "It's much better than an ordinary\n"
+	.string "and it gets the job done.\p"
 # 45 "data/maps/FortreeCity_Mart/scripts.pory"
-	.string "REPEL.$"
+	.string "It's much better than an ordinary\n"
 # 46 "data/maps/FortreeCity_Mart/scripts.pory"
-
+	.string "REPEL.$"
 # 47 "data/maps/FortreeCity_Mart/scripts.pory"
-FortreeCity_Mart_Text_StockUpOnItems:
-# 48 "data/maps/FortreeCity_Mart/scripts.pory"
-	.string "I always stock up on more items than\n"
-# 49 "data/maps/FortreeCity_Mart/scripts.pory"
-	.string "I'm sure I'll need.\p"
-# 50 "data/maps/FortreeCity_Mart/scripts.pory"
-	.string "You never know what might happen.\n"
-# 51 "data/maps/FortreeCity_Mart/scripts.pory"
-	.string "Better to be safe than sorry!$"
-# 52 "data/maps/FortreeCity_Mart/scripts.pory"
 
+# 48 "data/maps/FortreeCity_Mart/scripts.pory"
+FortreeCity_Mart_Text_StockUpOnItems:
+# 49 "data/maps/FortreeCity_Mart/scripts.pory"
+	.string "I always stock up on more items than\n"
+# 50 "data/maps/FortreeCity_Mart/scripts.pory"
+	.string "I'm sure I'll need.\p"
+# 51 "data/maps/FortreeCity_Mart/scripts.pory"
+	.string "You never know what might happen.\n"
+# 52 "data/maps/FortreeCity_Mart/scripts.pory"
+	.string "Better to be safe than sorry!$"
 # 53 "data/maps/FortreeCity_Mart/scripts.pory"
-FortreeCity_Mart_Text_RareCandyMakesMonGrow:
+
 # 54 "data/maps/FortreeCity_Mart/scripts.pory"
-	.string "A RARE CANDY makes a POKéMON grow\n"
+FortreeCity_Mart_Text_RareCandyMakesMonGrow:
 # 55 "data/maps/FortreeCity_Mart/scripts.pory"
+	.string "A RARE CANDY makes a POKéMON grow\n"
+# 56 "data/maps/FortreeCity_Mart/scripts.pory"
 	.string "immediately by one level.$"

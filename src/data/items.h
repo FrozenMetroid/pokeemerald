@@ -1236,15 +1236,15 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_EvolutionStone,
     },
 
-    [ITEM_064] =
+    [ITEM_ABILITY_POD] =
     {
-        .name = _("????????"),
-        .itemId = ITEM_NONE,
-        .price = 0,
-        .description = sDummyDesc,
+        .name = _("ABILITY POD"),
+        .itemId = ITEM_ABILITY_POD,
+        .price = 1000,
+        .description = sAbilityPodDesc,
         .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_AbilityPod,
     },
 
     [ITEM_065] =

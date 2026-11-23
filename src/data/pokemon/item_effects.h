@@ -243,7 +243,7 @@ const u8 gItemEffect_DireHit[8] = {
 };
 
 const u8 gItemEffect_XAttack[8] = {
-    [0] = 1, // ITEM0_X_ATTACK
+    [0] = ITEM0_X_ATTACK,
     [5] = ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID,
     STAT_BOOST_FRIENDSHIP_CHANGE,
 };
@@ -386,6 +386,10 @@ const u8 gItemEffect_TamatoBerry[10] = {
     EV_BERRY_FRIENDSHIP_CHANGE,
 };
 
+const u8 gItemEffect_AbilityPod[6] = {
+    [0] = ITEM0_ABILITY_POD,
+};
+
 const u8 *const gItemEffectTable[] =
 {
     [ITEM_POTION - ITEM_POTION]        = gItemEffect_Potion,
@@ -442,6 +446,7 @@ const u8 *const gItemEffectTable[] =
     [ITEM_WATER_STONE - ITEM_POTION]   = gItemEffect_WaterStone,
     [ITEM_LEAF_STONE - ITEM_POTION]    = gItemEffect_LeafStone,
     [ITEM_LINKING_CORD - ITEM_POTION]  = gItemEffect_LinkingCord,
+    [ITEM_ABILITY_POD - ITEM_POTION]   = gItemEffect_AbilityPod,
     [ITEM_CHERI_BERRY - ITEM_POTION]   = gItemEffect_CheriBerry,
     [ITEM_CHESTO_BERRY - ITEM_POTION]  = gItemEffect_ChestoBerry,
     [ITEM_PECHA_BERRY - ITEM_POTION]   = gItemEffect_PechaBerry,

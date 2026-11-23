@@ -49,44 +49,46 @@ SlateportCity_Mart_Pokemart:
 # 25 "data/maps/SlateportCity_Mart/scripts.pory"
 	.2byte ITEM_HARBOR_MAIL
 # 26 "data/maps/SlateportCity_Mart/scripts.pory"
-	pokemartlistend
+	.2byte ITEM_ABILITY_POD
 # 27 "data/maps/SlateportCity_Mart/scripts.pory"
-
+	pokemartlistend
 # 28 "data/maps/SlateportCity_Mart/scripts.pory"
-SlateportCity_Mart_EventScript_BlackBelt::
+
 # 29 "data/maps/SlateportCity_Mart/scripts.pory"
-	msgbox SlateportCity_Mart_Text_SomeItemsOnlyAtMart, MSGBOX_NPC
+SlateportCity_Mart_EventScript_BlackBelt::
 # 30 "data/maps/SlateportCity_Mart/scripts.pory"
-	end
+	msgbox SlateportCity_Mart_Text_SomeItemsOnlyAtMart, MSGBOX_NPC
 # 31 "data/maps/SlateportCity_Mart/scripts.pory"
-
-# 32 "data/maps/SlateportCity_Mart/scripts.pory"
-SlateportCity_Mart_EventScript_Man::
-# 33 "data/maps/SlateportCity_Mart/scripts.pory"
-	msgbox SlateportCity_Mart_Text_GreatBallIsBetter, MSGBOX_NPC
-# 34 "data/maps/SlateportCity_Mart/scripts.pory"
 	end
+# 32 "data/maps/SlateportCity_Mart/scripts.pory"
+
+# 33 "data/maps/SlateportCity_Mart/scripts.pory"
+SlateportCity_Mart_EventScript_Man::
+# 34 "data/maps/SlateportCity_Mart/scripts.pory"
+	msgbox SlateportCity_Mart_Text_GreatBallIsBetter, MSGBOX_NPC
 # 35 "data/maps/SlateportCity_Mart/scripts.pory"
-
+	end
 # 36 "data/maps/SlateportCity_Mart/scripts.pory"
-SlateportCity_Mart_Text_SomeItemsOnlyAtMart:
-# 37 "data/maps/SlateportCity_Mart/scripts.pory"
-	.string "The MARKET does have some interesting\n"
-# 38 "data/maps/SlateportCity_Mart/scripts.pory"
-	.string "merchandise.\p"
-# 39 "data/maps/SlateportCity_Mart/scripts.pory"
-	.string "But there are some items you can only\n"
-# 40 "data/maps/SlateportCity_Mart/scripts.pory"
-	.string "get at a POKéMON MART.$"
-# 41 "data/maps/SlateportCity_Mart/scripts.pory"
 
+# 37 "data/maps/SlateportCity_Mart/scripts.pory"
+SlateportCity_Mart_Text_SomeItemsOnlyAtMart:
+# 38 "data/maps/SlateportCity_Mart/scripts.pory"
+	.string "The MARKET does have some interesting\n"
+# 39 "data/maps/SlateportCity_Mart/scripts.pory"
+	.string "merchandise.\p"
+# 40 "data/maps/SlateportCity_Mart/scripts.pory"
+	.string "But there are some items you can only\n"
+# 41 "data/maps/SlateportCity_Mart/scripts.pory"
+	.string "get at a POKéMON MART.$"
 # 42 "data/maps/SlateportCity_Mart/scripts.pory"
-SlateportCity_Mart_Text_GreatBallIsBetter:
+
 # 43 "data/maps/SlateportCity_Mart/scripts.pory"
-	.string "A GREAT BALL is better than a POKé BALL\n"
+SlateportCity_Mart_Text_GreatBallIsBetter:
 # 44 "data/maps/SlateportCity_Mart/scripts.pory"
-	.string "at catching POKéMON.\p"
+	.string "A GREAT BALL is better than a POKé BALL\n"
 # 45 "data/maps/SlateportCity_Mart/scripts.pory"
-	.string "With this, I should be able to get that\n"
+	.string "at catching POKéMON.\p"
 # 46 "data/maps/SlateportCity_Mart/scripts.pory"
+	.string "With this, I should be able to get that\n"
+# 47 "data/maps/SlateportCity_Mart/scripts.pory"
 	.string "elusive POKéMON…$"

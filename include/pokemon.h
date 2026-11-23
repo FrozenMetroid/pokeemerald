@@ -94,6 +94,7 @@ enum {
     MON_DATA_SPEED2,
     MON_DATA_SPATK2,
     MON_DATA_SPDEF2,
+    MON_DATA_NATURE_OVERRIDE,
 };
 
 struct PokemonSubstruct0
@@ -104,7 +105,7 @@ struct PokemonSubstruct0
     u8 ppBonuses;
     u8 friendship;
     u8 abilityNum;
-    u8 filler;
+    u8 natureOverride;
 };
 
 struct PokemonSubstruct1

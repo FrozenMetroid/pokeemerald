@@ -61,108 +61,112 @@ RustboroCity_Mart_Pokemart_Basic:
 # 31 "data/maps/RustboroCity_Mart/scripts.pory"
 	.2byte ITEM_X_DEFEND
 # 32 "data/maps/RustboroCity_Mart/scripts.pory"
-	pokemartlistend
+	.2byte ITEM_ABILITY_POD
 # 33 "data/maps/RustboroCity_Mart/scripts.pory"
-
-# 34 "data/maps/RustboroCity_Mart/scripts.pory"
-RustboroCity_Mart_EventScript_PokemartExpanded::
-# 35 "data/maps/RustboroCity_Mart/scripts.pory"
-	pokemart RustboroCity_Mart_Pokemart_Expanded
-# 36 "data/maps/RustboroCity_Mart/scripts.pory"
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
-# 37 "data/maps/RustboroCity_Mart/scripts.pory"
-	release
-# 38 "data/maps/RustboroCity_Mart/scripts.pory"
-	end
-# 39 "data/maps/RustboroCity_Mart/scripts.pory"
-
-# 40 "data/maps/RustboroCity_Mart/scripts.pory"
-	.align 2
-# 41 "data/maps/RustboroCity_Mart/scripts.pory"
-RustboroCity_Mart_Pokemart_Expanded:
-# 42 "data/maps/RustboroCity_Mart/scripts.pory"
-	.2byte ITEM_POKE_BALL
-# 43 "data/maps/RustboroCity_Mart/scripts.pory"
-	.2byte ITEM_TIMER_BALL
-# 44 "data/maps/RustboroCity_Mart/scripts.pory"
-	.2byte ITEM_REPEAT_BALL
-# 45 "data/maps/RustboroCity_Mart/scripts.pory"
-	.2byte ITEM_POTION
-# 46 "data/maps/RustboroCity_Mart/scripts.pory"
-	.2byte ITEM_SUPER_POTION
-# 47 "data/maps/RustboroCity_Mart/scripts.pory"
-	.2byte ITEM_ANTIDOTE
-# 48 "data/maps/RustboroCity_Mart/scripts.pory"
-	.2byte ITEM_PARALYZE_HEAL
-# 49 "data/maps/RustboroCity_Mart/scripts.pory"
-	.2byte ITEM_ESCAPE_ROPE
-# 50 "data/maps/RustboroCity_Mart/scripts.pory"
-	.2byte ITEM_REPEL
-# 51 "data/maps/RustboroCity_Mart/scripts.pory"
-	.2byte ITEM_X_SPEED
-# 52 "data/maps/RustboroCity_Mart/scripts.pory"
-	.2byte ITEM_X_ATTACK
-# 53 "data/maps/RustboroCity_Mart/scripts.pory"
-	.2byte ITEM_X_DEFEND
-# 54 "data/maps/RustboroCity_Mart/scripts.pory"
 	pokemartlistend
+# 34 "data/maps/RustboroCity_Mart/scripts.pory"
+
+# 35 "data/maps/RustboroCity_Mart/scripts.pory"
+RustboroCity_Mart_EventScript_PokemartExpanded::
+# 36 "data/maps/RustboroCity_Mart/scripts.pory"
+	pokemart RustboroCity_Mart_Pokemart_Expanded
+# 37 "data/maps/RustboroCity_Mart/scripts.pory"
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+# 38 "data/maps/RustboroCity_Mart/scripts.pory"
+	release
+# 39 "data/maps/RustboroCity_Mart/scripts.pory"
+	end
+# 40 "data/maps/RustboroCity_Mart/scripts.pory"
+
+# 41 "data/maps/RustboroCity_Mart/scripts.pory"
+	.align 2
+# 42 "data/maps/RustboroCity_Mart/scripts.pory"
+RustboroCity_Mart_Pokemart_Expanded:
+# 43 "data/maps/RustboroCity_Mart/scripts.pory"
+	.2byte ITEM_POKE_BALL
+# 44 "data/maps/RustboroCity_Mart/scripts.pory"
+	.2byte ITEM_TIMER_BALL
+# 45 "data/maps/RustboroCity_Mart/scripts.pory"
+	.2byte ITEM_REPEAT_BALL
+# 46 "data/maps/RustboroCity_Mart/scripts.pory"
+	.2byte ITEM_POTION
+# 47 "data/maps/RustboroCity_Mart/scripts.pory"
+	.2byte ITEM_SUPER_POTION
+# 48 "data/maps/RustboroCity_Mart/scripts.pory"
+	.2byte ITEM_ANTIDOTE
+# 49 "data/maps/RustboroCity_Mart/scripts.pory"
+	.2byte ITEM_PARALYZE_HEAL
+# 50 "data/maps/RustboroCity_Mart/scripts.pory"
+	.2byte ITEM_ESCAPE_ROPE
+# 51 "data/maps/RustboroCity_Mart/scripts.pory"
+	.2byte ITEM_REPEL
+# 52 "data/maps/RustboroCity_Mart/scripts.pory"
+	.2byte ITEM_X_SPEED
+# 53 "data/maps/RustboroCity_Mart/scripts.pory"
+	.2byte ITEM_X_ATTACK
+# 54 "data/maps/RustboroCity_Mart/scripts.pory"
+	.2byte ITEM_X_DEFEND
 # 55 "data/maps/RustboroCity_Mart/scripts.pory"
-
+	.2byte ITEM_ABILITY_POD
 # 56 "data/maps/RustboroCity_Mart/scripts.pory"
-RustboroCity_Mart_EventScript_PokefanF::
+	pokemartlistend
 # 57 "data/maps/RustboroCity_Mart/scripts.pory"
-	msgbox RustboroCity_Mart_Text_BuyingHealsInCaseOfShroomish, MSGBOX_NPC
+
 # 58 "data/maps/RustboroCity_Mart/scripts.pory"
-	end
+RustboroCity_Mart_EventScript_PokefanF::
 # 59 "data/maps/RustboroCity_Mart/scripts.pory"
-
+	msgbox RustboroCity_Mart_Text_BuyingHealsInCaseOfShroomish, MSGBOX_NPC
 # 60 "data/maps/RustboroCity_Mart/scripts.pory"
-RustboroCity_Mart_EventScript_Boy::
+	end
 # 61 "data/maps/RustboroCity_Mart/scripts.pory"
-	msgbox RustboroCity_Mart_Text_ShouldBuySuperPotionsInstead, MSGBOX_NPC
+
 # 62 "data/maps/RustboroCity_Mart/scripts.pory"
-	end
+RustboroCity_Mart_EventScript_Boy::
 # 63 "data/maps/RustboroCity_Mart/scripts.pory"
-
+	msgbox RustboroCity_Mart_Text_ShouldBuySuperPotionsInstead, MSGBOX_NPC
 # 64 "data/maps/RustboroCity_Mart/scripts.pory"
-RustboroCity_Mart_EventScript_BugCatcher::
-# 65 "data/maps/RustboroCity_Mart/scripts.pory"
-	msgbox RustboroCity_Mart_Text_GettingEscapeRopeJustInCase, MSGBOX_NPC
-# 66 "data/maps/RustboroCity_Mart/scripts.pory"
 	end
+# 65 "data/maps/RustboroCity_Mart/scripts.pory"
+
+# 66 "data/maps/RustboroCity_Mart/scripts.pory"
+RustboroCity_Mart_EventScript_BugCatcher::
 # 67 "data/maps/RustboroCity_Mart/scripts.pory"
-
+	msgbox RustboroCity_Mart_Text_GettingEscapeRopeJustInCase, MSGBOX_NPC
 # 68 "data/maps/RustboroCity_Mart/scripts.pory"
-RustboroCity_Mart_Text_BuyingHealsInCaseOfShroomish:
+	end
 # 69 "data/maps/RustboroCity_Mart/scripts.pory"
-	.string "I'm buying some PARLYZ HEALS and\n"
+
 # 70 "data/maps/RustboroCity_Mart/scripts.pory"
-	.string "ANTIDOTES.\p"
+RustboroCity_Mart_Text_BuyingHealsInCaseOfShroomish:
 # 71 "data/maps/RustboroCity_Mart/scripts.pory"
-	.string "Just in case I run into SHROOMISH\n"
+	.string "I'm buying some PARLYZ HEALS and\n"
 # 72 "data/maps/RustboroCity_Mart/scripts.pory"
-	.string "in PETALBURG WOODS.$"
+	.string "ANTIDOTES.\p"
 # 73 "data/maps/RustboroCity_Mart/scripts.pory"
-
+	.string "Just in case I run into SHROOMISH\n"
 # 74 "data/maps/RustboroCity_Mart/scripts.pory"
-RustboroCity_Mart_Text_ShouldBuySuperPotionsInstead:
+	.string "in PETALBURG WOODS.$"
 # 75 "data/maps/RustboroCity_Mart/scripts.pory"
-	.string "My POKéMON evolved.\n"
-# 76 "data/maps/RustboroCity_Mart/scripts.pory"
-	.string "It has a lot of HP now.\p"
-# 77 "data/maps/RustboroCity_Mart/scripts.pory"
-	.string "I should buy SUPER POTIONS for it\n"
-# 78 "data/maps/RustboroCity_Mart/scripts.pory"
-	.string "instead of ordinary POTIONS.$"
-# 79 "data/maps/RustboroCity_Mart/scripts.pory"
 
+# 76 "data/maps/RustboroCity_Mart/scripts.pory"
+RustboroCity_Mart_Text_ShouldBuySuperPotionsInstead:
+# 77 "data/maps/RustboroCity_Mart/scripts.pory"
+	.string "My POKéMON evolved.\n"
+# 78 "data/maps/RustboroCity_Mart/scripts.pory"
+	.string "It has a lot of HP now.\p"
+# 79 "data/maps/RustboroCity_Mart/scripts.pory"
+	.string "I should buy SUPER POTIONS for it\n"
 # 80 "data/maps/RustboroCity_Mart/scripts.pory"
-RustboroCity_Mart_Text_GettingEscapeRopeJustInCase:
+	.string "instead of ordinary POTIONS.$"
 # 81 "data/maps/RustboroCity_Mart/scripts.pory"
-	.string "I'm getting an ESCAPE ROPE just in\n"
+
 # 82 "data/maps/RustboroCity_Mart/scripts.pory"
-	.string "case I get lost in a cave.\p"
+RustboroCity_Mart_Text_GettingEscapeRopeJustInCase:
 # 83 "data/maps/RustboroCity_Mart/scripts.pory"
-	.string "I just need to use it to get back to\n"
+	.string "I'm getting an ESCAPE ROPE just in\n"
 # 84 "data/maps/RustboroCity_Mart/scripts.pory"
+	.string "case I get lost in a cave.\p"
+# 85 "data/maps/RustboroCity_Mart/scripts.pory"
+	.string "I just need to use it to get back to\n"
+# 86 "data/maps/RustboroCity_Mart/scripts.pory"
 	.string "the entrance.$"

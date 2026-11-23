@@ -2,7 +2,8 @@
 #define GUARD_CONSTANTS_ITEM_EFFECTS_H
 
 // field 0 masks
-#define ITEM0_X_ATTACK          0x0F
+#define ITEM0_X_ATTACK          0x1
+#define ITEM0_ABILITY_POD       0x2
 #define ITEM0_DIRE_HIT          0x30 // Works the same way as the move Focus Energy.
 #define ITEM0_SACRED_ASH        0x40
 #define ITEM0_INFATUATION       0x80

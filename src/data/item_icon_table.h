@@ -111,8 +111,8 @@ const u32 *const gItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_WATER_STONE] = {gItemIcon_WaterStone, gItemIconPalette_WaterStone},
     [ITEM_LEAF_STONE] = {gItemIcon_LeafStone, gItemIconPalette_LeafStone},
     [ITEM_LINKING_CORD] = {gItemIcon_LinkingCord, gItemIconPalette_LinkingCord},
+    [ITEM_ABILITY_POD] = {gItemIcon_AbilityPod, gItemIconPalette_AbilityPod},
     // ????????
-    [ITEM_064] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_065] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_066] = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     // Valuables

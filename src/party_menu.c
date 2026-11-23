@@ -64,6 +64,7 @@
 #include "trade.h"
 #include "union_room.h"
 #include "window.h"
+#include "constants/abilities.h"
 #include "constants/battle.h"
 #include "constants/battle_frontier.h"
 #include "constants/field_effects.h"
@@ -6466,4 +6467,33 @@ void IsLastMonThatKnowsSurf(void)
         if (AnyStorageMonWithMove(move) != TRUE)
             gSpecialVar_Result = TRUE;
     }
+}
+
+void ItemUseCB_AbilityPod(u8 taskId, TaskFunc task)
+{
+    struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
+    u16 species = GetMonData(mon, MON_DATA_SPECIES);
+    u8 abilityNum = GetMonData(mon, MON_DATA_ABILITY_NUM);
+
+    if (gSpeciesInfo[species].abilities[0] == ABILITY_NONE
+     || gSpeciesInfo[species].abilities[1] == ABILITY_NONE
+     || gSpeciesInfo[species].abilities[0] == gSpeciesInfo[species].abilities[1])
+    {
+        gPartyMenuUseExitCallback = FALSE;
+        PlaySE(SE_SELECT);
+        DisplayPartyMenuMessage(gText_WontHaveEffect, TRUE);
+    }
+    else
+    {
+        abilityNum ^= 1;
+        SetMonData(mon, MON_DATA_ABILITY_NUM, &abilityNum);
+        gPartyMenuUseExitCallback = TRUE;
+        PlaySE(SE_USE_ITEM);
+        RemoveBagItem(gSpecialVar_ItemId, 1);
+        GetMonNickname(mon, gStringVar1);
+        StringExpandPlaceholders(gStringVar4, gText_PkmnAbilityChanged);
+        DisplayPartyMenuMessage(gStringVar4, TRUE);
+    }
+    ScheduleBgCopyTilemapToVram(2);
+    gTasks[taskId].func = task;
 }

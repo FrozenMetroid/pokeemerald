@@ -3858,6 +3858,8 @@ extern const u32 gItemIcon_ShinyCharm[];
 extern const u32 gItemIconPalette_ShinyCharm[];
 extern const u32 gItemIcon_LinkingCord[];
 extern const u32 gItemIconPalette_LinkingCord[];
+extern const u32 gItemIcon_AbilityPod[];
+extern const u32 gItemIconPalette_AbilityPod[];
 
 extern const u32 gItemIcon_ReturnToFieldArrow[];
 extern const u32 gItemIconPalette_ReturnToFieldArrow[];

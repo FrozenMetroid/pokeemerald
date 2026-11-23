@@ -4220,6 +4220,9 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
                 | (substruct3->worldRibbon << (1 + CONTEST_RIBBON_BITS * 5 + 10));
         }
         break;
+    case MON_DATA_NATURE_OVERRIDE:
+        retVal = substruct0->natureOverride;
+        break;
     default:
         break;
     }
@@ -4560,6 +4563,9 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         substruct3->spDefenseIV = (ivs >> 25) & MAX_IV_MASK;
         break;
     }
+    case MON_DATA_NATURE_OVERRIDE:
+        substruct0->natureOverride = *data;
+        break;
     default:
         break;
     }

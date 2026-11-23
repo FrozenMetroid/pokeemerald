@@ -747,3 +747,6 @@ const u32 gItemIconPalette_ShinyCharm[] = INCGFX_U32("graphics/items/icon_palett
 
 const u32 gItemIcon_LinkingCord[] = INCGFX_U32("graphics/items/icons/linking_cord.png", ".4bpp.lz");
 const u32 gItemIconPalette_LinkingCord[] = INCGFX_U32("graphics/items/icon_palettes/linking_cord.pal", ".gbapal.lz");
+
+const u32 gItemIcon_AbilityPod[] = INCGFX_U32("graphics/items/icons/ability_pod.png", ".4bpp.lz");
+const u32 gItemIconPalette_AbilityPod[] = INCGFX_U32("graphics/items/icon_palettes/ability_pod.pal", ".gbapal.lz");
