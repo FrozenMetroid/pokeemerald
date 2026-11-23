@@ -105,7 +105,7 @@ struct PokemonSubstruct0
     u8 ppBonuses;
     u8 friendship;
     u8 abilityNum;
-    u8 natureOverride;
+    u8 natureOverride; // 0 means no override; otherwise the nature index plus one.
 };
 
 struct PokemonSubstruct1
@@ -556,5 +556,7 @@ void GenerateTrainerShinyIDWithPersonality(u32 *personalityValue, u32 *id);
 u32 GenerateShinyPersonalityWithTrainerID(u32 monOTID);
 
 u32 FlagIndex(int num);
+
+u8 GetStatNature(struct Pokemon *mon);
 
 #endif // GUARD_POKEMON_H

@@ -108,8 +108,10 @@ All credits for the decompilation efforts lie with the contributors of pokeemera
 - Overworld poison has been removed
 - Pokémon with the Ability Harvest will grant one additional Berry when they are the first Pokémon in the party when collecting Berries (CalcBerryYieldInternal)
 - Decreased the cost of coins from the Game Corner to reduce the grinding
+- A new NPC in the Daycare will allow you to change your Pokémon's nature like nature mints
 
 ### Items
 - A clerk on the second floor of the department store now sells evolution stones and the Linking Cord (used to evolve Haunter, Kadabra, Machoke, and Graveler)
 - A new Water Stone has been added to Route 114 near the Persim Berries (requires Surf)
 - Bottle Caps can be bought at the Battle Frontier for 5BP and 20BP for silver and gold caps, respectively. Use them in the house to the left of the Battle Tower
+- Ability Capsules (shortened to ABILITY POD) can be found in most Poké Marts

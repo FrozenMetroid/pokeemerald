@@ -2707,6 +2707,15 @@ bool8 ShouldIgnoreDeoxysForm(u8 caseId, u8 battler)
     return TRUE;
 }
 
+u8 GetStatNature(struct Pokemon *mon)
+{
+    u8 override = GetMonData(mon, MON_DATA_NATURE_OVERRIDE, NULL);
+
+    if (override != 0 && override <= NUM_NATURES)
+        return override - 1;
+    return GetNature(mon);
+}
+
 static u16 GetDeoxysStat(struct Pokemon *mon, s32 statId)
 {
     s32 ivVal, evVal;
@@ -2719,7 +2728,7 @@ static u16 GetDeoxysStat(struct Pokemon *mon, s32 statId)
     ivVal = GetMonData(mon, MON_DATA_HP_IV + statId, NULL);
     evVal = GetMonData(mon, MON_DATA_HP_EV + statId, NULL);
     statValue = ((sDeoxysBaseStats[statId] * 2 + ivVal + evVal / 4) * mon->level) / 100 + 5;
-    nature = GetNature(mon);
+    nature = GetStatNature(mon);
     statValue = ModifyStatByNature(nature, statValue, (u8)statId);
     return statValue;
 }
@@ -2827,7 +2836,6 @@ u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon)
 {                                                               \
     u8 baseStat = gSpeciesInfo[species].base;                   \
     s32 n = (((2 * baseStat + iv + ev / 4) * level) / 100) + 5; \
-    u8 nature = GetNature(mon);                                 \
     n = ModifyStatByNature(nature, n, statIndex);               \
     SetMonData(mon, field, &n);                                 \
 }
@@ -2850,6 +2858,7 @@ void CalculateMonStats(struct Pokemon *mon)
     s32 spDefenseEV = GetMonData(mon, MON_DATA_SPDEF_EV, NULL);
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     s32 level = GetLevelFromMonExp(mon);
+    u8 nature = GetStatNature(mon);
     s32 newMaxHP;
 
     SetMonData(mon, MON_DATA_LEVEL, &level);

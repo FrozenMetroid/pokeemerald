@@ -30,6 +30,7 @@
 #include "pokeblock.h"
 #include "pokemon.h"
 #include "pokemon_storage_system.h"
+#include "pokemon_summary_screen.h"
 #include "random.h"
 #include "rayquaza_scene.h"
 #include "region_map.h"
@@ -2380,6 +2381,16 @@ void ShowScrollableMultichoice(void)
         task->tKeepOpenAfterSelect = FALSE;
         task->tTaskId = taskId;
         break;
+    case SCROLL_MULTI_NATURES:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = NUM_NATURES;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
     default:
         gSpecialVar_Result = MULTI_B_PRESSED;
         DestroyTask(taskId);
@@ -2563,7 +2574,11 @@ static void Task_ShowScrollableMultichoice(u8 taskId)
 
     for (width = 0, i = 0; i < task->tNumItems; i++)
     {
-        const u8 *text = sScrollableMultichoiceOptions[gSpecialVar_0x8004][i];
+        const u8 *text;
+        if (task->tScrollMultiId == SCROLL_MULTI_NATURES)
+            text = gNatureNamePointers[i];
+        else
+            text = sScrollableMultichoiceOptions[task->tScrollMultiId][i];
         sScrollableMultichoice_ListMenuItem[i].name = text;
         sScrollableMultichoice_ListMenuItem[i].id = i;
         width = DisplayTextAndGetWidth(text, width);
@@ -2593,6 +2608,24 @@ static void Task_ShowScrollableMultichoice(u8 taskId)
     task->tListTaskId = ListMenuInit(&gScrollableMultichoice_ListMenuTemplate, task->tScrollOffset, task->tSelectedRow);
     ScheduleBgCopyTilemapToVram(0);
     gTasks[taskId].func = ScrollableMultichoice_ProcessInput;
+}
+
+bool8 SetPartyMonNatureOverride(void)
+{
+    struct Pokemon *mon;
+    u8 natureOverride;
+
+    if (gSpecialVar_0x800A >= PARTY_SIZE || gSpecialVar_0x8005 >= NUM_NATURES)
+        return FALSE;
+
+    mon = &gPlayerParty[gSpecialVar_0x800A];
+    if (GetMonData(mon, MON_DATA_SPECIES) == SPECIES_NONE || GetMonData(mon, MON_DATA_IS_EGG))
+        return FALSE;
+
+    natureOverride = gSpecialVar_0x8005 + 1;
+    SetMonData(mon, MON_DATA_NATURE_OVERRIDE, &natureOverride);
+    CalculateMonStats(mon);
+    return TRUE;
 }
 
 static void InitScrollableMultichoice(void)

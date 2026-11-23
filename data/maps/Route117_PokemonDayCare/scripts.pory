@@ -1,8 +1,50 @@
-raw `
-Route117_PokemonDayCare_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, Route117_PokemonDayCare_OnTransition
-	.byte 0
+mapscripts Route117_PokemonDayCare_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION: Route117_PokemonDayCare_OnTransition
+}
 
+script Route117_PokemonDayCare_EventScript_NatureOverrider {
+	lockall
+	faceplayer
+	msgbox("Hiya! I like to help train
+	people's POKéMON!
+
+	I can train a POKéMON's stats to
+	match a different nature!
+
+	Would you like me to help train one of
+	your POKéMON?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == NO) {
+		Route117_PokemonDayCare_EventScript_DeclinedNatureOverrider:
+		msgbox("Alright, maybe next time!")
+		release
+		end
+	}
+	msgbox("Great! Let's get started.")
+	special(ChoosePartyMon)
+	copyvar(VAR_0x800A, VAR_0x8004)
+	if (var(VAR_0x800A) == PARTY_NOTHING_CHOSEN) {
+		goto(Route117_PokemonDayCare_EventScript_DeclinedNatureOverrider)
+	}
+	msgbox("Which nature should I train its
+	stats to match?$")
+	setvar(VAR_0x8004, SCROLL_MULTI_NATURES)
+	special(ShowScrollableMultichoice)
+	if (var(VAR_RESULT) == MULTI_B_PRESSED) {
+		goto(Route117_PokemonDayCare_EventScript_DeclinedNatureOverrider)
+	}
+	copyvar(VAR_0x8005, VAR_RESULT)
+	specialvar(VAR_RESULT, SetPartyMonNatureOverride)
+	if (var(VAR_RESULT) == FALSE) {
+		msgbox("Sorry, I can't train that POKéMON.")
+		release
+		end
+	}
+	msgbox("All done! Its stats now match
+	the nature you chose.$")
+	release
+	end
+}
+raw `
 Route117_PokemonDayCare_OnTransition:
 	setflag FLAG_LANDMARK_POKEMON_DAYCARE
 	end
