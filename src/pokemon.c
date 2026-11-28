@@ -2311,7 +2311,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
         SetBoxMonData(boxMon, MON_DATA_ABILITY_NUM, &value);
     }
 
-    GiveBoxMonInitialMoveset(boxMon);
+    GiveBoxMonInitialMoveset(boxMon, otIdType);
 }
 
 void CreateMonWithNature(struct Pokemon *mon, u16 species, u8 level, u8 fixedIV, u8 nature)
@@ -3004,16 +3004,18 @@ void SetBattleMonMoveSlot(struct BattlePokemon *mon, u16 move, u8 slot)
     mon->pp[slot] = gBattleMoves[move].pp;
 }
 
-void GiveMonInitialMoveset(struct Pokemon *mon)
+void GiveMonInitialMoveset(struct Pokemon *mon, u8 otIdType)
 {
-    GiveBoxMonInitialMoveset(&mon->box);
+    GiveBoxMonInitialMoveset(&mon->box, otIdType);
 }
 
-void GiveBoxMonInitialMoveset(struct BoxPokemon *boxMon)
+void GiveBoxMonInitialMoveset(struct BoxPokemon *boxMon, u8 otIdType)
 {
     u16 species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
     s32 level = GetLevelFromBoxMonExp(boxMon);
     s32 i;
+    u16 learnset[30]; // might need to be larger
+    u8 numMoves = 0;
 
     for (i = 0; gLevelUpLearnsets[species][i] != LEVEL_UP_END; i++)
     {
@@ -3025,10 +3027,22 @@ void GiveBoxMonInitialMoveset(struct BoxPokemon *boxMon)
         if (moveLevel > (level << 9))
             break;
 
-        move = (gLevelUpLearnsets[species][i] & LEVEL_UP_MOVE_ID);
+        learnset[i] = move = (gLevelUpLearnsets[species][i] & LEVEL_UP_MOVE_ID);
+        numMoves++;
 
         if (GiveMoveToBoxMon(boxMon, move) == MON_HAS_MAX_MOVES)
             DeleteFirstMoveAndGiveMoveToBoxMon(boxMon, move);
+    }
+
+    // add randomization to the initial moveset for randomly generated OT IDs if the mon can learn more than 4 moves in the first place
+    // doesn't apply to Trainer teams
+    if (otIdType != OT_ID_RANDOM_NO_SHINY && numMoves > MAX_MON_MOVES) {
+        while (i < MAX_MON_MOVES)
+        {
+            if (GiveMoveToBoxMon(boxMon, learnset[Random() % numMoves]) != MON_ALREADY_KNOWS_MOVE) {
+                i++;
+            }
+        }
     }
 }
 
