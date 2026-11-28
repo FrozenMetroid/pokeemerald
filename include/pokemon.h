@@ -559,4 +559,6 @@ u32 FlagIndex(int num);
 
 u8 GetStatNature(struct Pokemon *mon);
 
+u16 GiveMoveToBoxMon(struct BoxPokemon *boxMon, u16 move);
+
 #endif // GUARD_POKEMON_H

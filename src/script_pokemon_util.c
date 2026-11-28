@@ -18,6 +18,7 @@
 #include "pokemon.h"
 #include "random.h"
 #include "script.h"
+#include "script_pokemon_util.h"
 #include "sprite.h"
 #include "string_util.h"
 #include "tv.h"
@@ -145,6 +146,42 @@ void CreateScriptedWildMon(u16 species, u8 level, u16 item)
         heldItem[0] = item;
         heldItem[1] = item >> 8;
         SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, heldItem);
+    }
+
+    SetScriptedWildMonLearnset(&gEnemyParty[0], species); // give them their scripted learnset
+}
+
+EWRAM_DATA struct ScriptedWildMonLearnset sScriptedWildMonLearnsets[] =
+{
+    {SPECIES_VOLTORB, {MOVE_ROLLOUT, MOVE_SHOCK_WAVE, MOVE_SONIC_BOOM, MOVE_SCREECH}},
+    {SPECIES_ELECTRODE, {MOVE_ROLLOUT, MOVE_SHOCK_WAVE, MOVE_SONIC_BOOM, MOVE_SCREECH}},
+    {SPECIES_SUDOWOODO, {MOVE_ROCK_SLIDE, MOVE_BODY_SLAM, MOVE_MIMIC, MOVE_BLOCK}},
+    {SPECIES_REGIROCK, {MOVE_ROCK_SLIDE, MOVE_EARTHQUAKE, MOVE_SANDSTORM, MOVE_SUPERPOWER}},
+    {SPECIES_REGICE, {MOVE_ICE_BEAM, MOVE_HAIL, MOVE_THUNDERBOLT, MOVE_SUPERPOWER}},
+    {SPECIES_REGISTEEL, {MOVE_METEOR_MASH, MOVE_SLAM, MOVE_IRON_DEFENSE, MOVE_SUPERPOWER}},
+    {SPECIES_LATIAS, {MOVE_DRAGON_CLAW, MOVE_MIST_BALL, MOVE_RECOVER, MOVE_CALM_MIND}},
+    {SPECIES_LATIOS, {MOVE_DRAGON_CLAW, MOVE_LUSTER_PURGE, MOVE_RECOVER, MOVE_CALM_MIND}},
+    {SPECIES_KYOGRE, {MOVE_WATER_PULSE, MOVE_ICE_BEAM, MOVE_CALM_MIND, MOVE_REST}},
+    {SPECIES_GROUDON, {MOVE_EARTHQUAKE, MOVE_ROCK_SLIDE, MOVE_CALM_MIND, MOVE_REST}},
+    {SPECIES_RAYQUAZA, {MOVE_DRAGON_CLAW, MOVE_AERIAL_ACE, MOVE_CALM_MIND, MOVE_REST}}
+};
+
+void SetScriptedWildMonLearnset(struct Pokemon *mon, u16 species)
+{
+    s32 i, j;
+    bool8 breakOut = FALSE;
+
+    for (i = 0; i < ARRAY_COUNT(sScriptedWildMonLearnsets); i++)
+    {
+        if (sScriptedWildMonLearnsets[i].species == species)
+        {
+            for (j = 0; j < MAX_MON_MOVES; j++)
+                GiveMoveToBoxMon(&mon->box, sScriptedWildMonLearnsets[i].moves[j]);
+            breakOut = TRUE;
+            break;
+        }
+        if (breakOut)
+            break;
     }
 }
 

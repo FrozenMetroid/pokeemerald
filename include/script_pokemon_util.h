@@ -4,8 +4,15 @@
 u8 ScriptGiveMon(u16 species, u8 level, u16 item, u32 unused1, u32 unused2, u8 unused3);
 u8 ScriptGiveEgg(u16 species);
 void CreateScriptedWildMon(u16 species, u8 level, u16 item);
+void SetScriptedWildMonLearnset(struct Pokemon *mon, u16 species);
 void ScriptSetMonMoveSlot(u8 monIndex, u16 move, u8 slot);
 void ReducePlayerPartyToSelectedMons(void);
 void HealPlayerParty(void);
+
+typedef struct ScriptedWildMonLearnset
+{
+    u16 species;
+    u16 moves[MAX_MON_MOVES];
+} ScriptedWildMonLearnset;
 
 #endif // GUARD_SCRIPT_POKEMON_UTIL_H
