@@ -9,10 +9,4 @@ void ScriptSetMonMoveSlot(u8 monIndex, u16 move, u8 slot);
 void ReducePlayerPartyToSelectedMons(void);
 void HealPlayerParty(void);
 
-typedef struct ScriptedWildMonLearnset
-{
-    u16 species;
-    u16 moves[MAX_MON_MOVES];
-} ScriptedWildMonLearnset;
-
 #endif // GUARD_SCRIPT_POKEMON_UTIL_H

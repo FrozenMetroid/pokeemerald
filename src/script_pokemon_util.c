@@ -151,37 +151,92 @@ void CreateScriptedWildMon(u16 species, u8 level, u16 item)
     SetScriptedWildMonLearnset(&gEnemyParty[0], species); // give them their scripted learnset
 }
 
-EWRAM_DATA struct ScriptedWildMonLearnset sScriptedWildMonLearnsets[] =
-{
-    {SPECIES_VOLTORB, {MOVE_ROLLOUT, MOVE_SHOCK_WAVE, MOVE_SONIC_BOOM, MOVE_SCREECH}},
-    {SPECIES_ELECTRODE, {MOVE_ROLLOUT, MOVE_SHOCK_WAVE, MOVE_SONIC_BOOM, MOVE_SCREECH}},
-    {SPECIES_SUDOWOODO, {MOVE_ROCK_SLIDE, MOVE_BODY_SLAM, MOVE_MIMIC, MOVE_BLOCK}},
-    {SPECIES_REGIROCK, {MOVE_ROCK_SLIDE, MOVE_EARTHQUAKE, MOVE_SANDSTORM, MOVE_SUPERPOWER}},
-    {SPECIES_REGICE, {MOVE_ICE_BEAM, MOVE_HAIL, MOVE_THUNDERBOLT, MOVE_SUPERPOWER}},
-    {SPECIES_REGISTEEL, {MOVE_METEOR_MASH, MOVE_SLAM, MOVE_IRON_DEFENSE, MOVE_SUPERPOWER}},
-    {SPECIES_LATIAS, {MOVE_DRAGON_CLAW, MOVE_MIST_BALL, MOVE_RECOVER, MOVE_CALM_MIND}},
-    {SPECIES_LATIOS, {MOVE_DRAGON_CLAW, MOVE_LUSTER_PURGE, MOVE_RECOVER, MOVE_CALM_MIND}},
-    {SPECIES_KYOGRE, {MOVE_WATER_PULSE, MOVE_ICE_BEAM, MOVE_CALM_MIND, MOVE_REST}},
-    {SPECIES_GROUDON, {MOVE_EARTHQUAKE, MOVE_ROCK_SLIDE, MOVE_CALM_MIND, MOVE_REST}},
-    {SPECIES_RAYQUAZA, {MOVE_DRAGON_CLAW, MOVE_AERIAL_ACE, MOVE_CALM_MIND, MOVE_REST}}
-};
-
 void SetScriptedWildMonLearnset(struct Pokemon *mon, u16 species)
 {
-    s32 i, j;
-    bool8 breakOut = FALSE;
+    u16 moves[MAX_MON_MOVES];
+    s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(sScriptedWildMonLearnsets); i++)
+    switch (species)
     {
-        if (sScriptedWildMonLearnsets[i].species == species)
-        {
-            for (j = 0; j < MAX_MON_MOVES; j++)
-                GiveMoveToBoxMon(&mon->box, sScriptedWildMonLearnsets[i].moves[j]);
-            breakOut = TRUE;
+        case SPECIES_VOLTORB: // New Mauville
+        case SPECIES_ELECTRODE: // Aqua Hideout
+            moves[0] = MOVE_ROLLOUT;
+            moves[1] = MOVE_SHOCK_WAVE;
+            moves[2] = MOVE_SONIC_BOOM;
+            moves[3] = MOVE_SCREECH;
             break;
-        }
-        if (breakOut)
+        case SPECIES_SUDOWOODO: // Battle Frontier
+            moves[0] = MOVE_ROCK_SLIDE;
+            moves[1] = MOVE_BODY_SLAM;
+            moves[2] = MOVE_MIMIC;
+            moves[3] = MOVE_BLOCK;
             break;
+        case SPECIES_REGIROCK: // Desert Ruins
+            moves[0] = MOVE_ROCK_SLIDE;
+            moves[1] = MOVE_EARTHQUAKE;
+            moves[2] = MOVE_SANDSTORM;
+            moves[3] = MOVE_SUPERPOWER;
+            break;
+        case SPECIES_REGICE: // Island Cave
+            moves[0] = MOVE_ICE_BEAM;
+            moves[1] = MOVE_HAIL;
+            moves[2] = MOVE_THUNDERBOLT;
+            moves[3] = MOVE_SUPERPOWER;
+            break;
+        case SPECIES_REGISTEEL: // Ancient Tomb
+            moves[0] = MOVE_METEOR_MASH;
+            moves[1] = MOVE_SLAM;
+            moves[2] = MOVE_IRON_DEFENSE;
+            moves[3] = MOVE_SUPERPOWER;
+            break;
+        case SPECIES_LATIAS: // Unused
+            moves[0] = MOVE_DRAGON_CLAW;
+            moves[1] = MOVE_MIST_BALL;
+            moves[2] = MOVE_RECOVER;
+            moves[3] = MOVE_CALM_MIND;
+            break;
+        case SPECIES_LATIOS: // Unused
+            moves[0] = MOVE_DRAGON_CLAW;
+            moves[1] = MOVE_LUSTER_PURGE;
+            moves[2] = MOVE_RECOVER;
+            moves[3] = MOVE_CALM_MIND;
+            break;
+        case SPECIES_KYOGRE: // Marine Cave
+            moves[0] = MOVE_WATER_PULSE;
+            moves[1] = MOVE_ICE_BEAM;
+            moves[2] = MOVE_CALM_MIND;
+            moves[3] = MOVE_REST;
+            break;
+        case SPECIES_GROUDON: // Terra Cave
+            moves[0] = MOVE_EARTHQUAKE;
+            moves[1] = MOVE_ROCK_SLIDE;
+            moves[2] = MOVE_BULK_UP;
+            moves[3] = MOVE_REST;
+            break;
+        case SPECIES_RAYQUAZA: // Sky Pillar
+            moves[0] = MOVE_DRAGON_CLAW;
+            moves[1] = MOVE_AERIAL_ACE;
+            moves[2] = MOVE_CRUNCH;
+            moves[3] = MOVE_REST;
+            break;
+        case SPECIES_DEOXYS: // Unused
+            moves[0] = MOVE_PSYCHIC;
+            moves[1] = MOVE_RECOVER;
+            moves[2] = MOVE_SWIFT;
+            moves[3] = MOVE_AGILITY;
+            break;
+        case SPECIES_JIRACHI: // Unused
+            moves[0] = MOVE_PSYCHIC;
+            moves[1] = MOVE_METEOR_MASH;
+            moves[2] = MOVE_REFRESH;
+            moves[3] = MOVE_WISH;
+            break;
+        default:
+            return;
+    }
+
+    for (i = 0; i < MAX_MON_MOVES; i++) {
+        SetMonMoveSlot(mon, moves[i], i);
     }
 }
 

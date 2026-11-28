@@ -3,6 +3,6 @@
 
 #include "gba/isagbprint.h"
 
-#define DEBUG_BATTLE
+// #define DEBUG_BATTLE
 
 #endif // GUARD_DEBUG_H
